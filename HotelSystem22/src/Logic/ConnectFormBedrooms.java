@@ -5,10 +5,12 @@
  */
 package Logic;
 
+import Data.Vbedrooms;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -54,5 +56,31 @@ public class ConnectFormBedrooms {
             JOptionPane.showConfirmDialog(null, e);
             return null;
         }
-    }    
+    }  
+    
+    public boolean insert(Vbedrooms dts){
+        sSql = "insert into tb_bedroom  (floor_br, description_br, characteristics_br, dialy_Price_br, state_br, " + 
+               "type_br) values(?,?,?,?,?,?,?)";
+        try {
+            PreparedStatement pst=cn.prepareStatement(sSql);
+            // Insert record  on fields
+            pst.setString(1, dts.getNumber());
+            pst.setString(2, dts.getFloor());
+            pst.setString(3, dts.getDescription());
+            pst.setString(4, dts.getCharacteristics());
+            pst.setDouble(5, dts.getValueDaily());
+            pst.setString(6, dts.getState());
+            pst.setString(7, dts.getTypeBedroom());
+            
+            int n=pst.executeUpdate();
+            if (n!=0) {
+                return true;
+            }else {
+                return false;
+            }
+        } catch (SQLException e) {
+            JOptionPane.showConfirmDialog(null, e);
+            return false;
+        }        
+    }
 }
