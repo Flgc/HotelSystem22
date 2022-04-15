@@ -59,7 +59,7 @@ public class ConnectFormBedrooms {
     }  
     
     public boolean insert(Vbedrooms dts){
-        sSql = "insert into tb_bedroom  (floor_br, description_br, characteristics_br, dialy_Price_br, state_br, " + 
+        sSql = "insert into tb_bedroom  (number_br, floor_br, description_br, characteristics_br, dialy_Price_br, state_br, " + 
                "type_br) values(?,?,?,?,?,?,?)";
         try {
             PreparedStatement pst=cn.prepareStatement(sSql);
@@ -83,4 +83,48 @@ public class ConnectFormBedrooms {
             return false;
         }        
     }
+
+    public boolean edit(Vbedrooms dts){
+        sSql = "update into tb_bedroom  set number_br=?,  floor_br= , description_br=?, characteristics_br=?,"
+                + "dialy_Price_br=?, state_br=?, type_br=? where id_br=?";
+        try {
+            PreparedStatement pst=cn.prepareStatement(sSql);
+            // update record  on fields
+            pst.setString(1, dts.getNumber());
+            pst.setString(2, dts.getFloor());
+            pst.setString(3, dts.getDescription());
+            pst.setString(4, dts.getCharacteristics());
+            pst.setDouble(5, dts.getValueDaily());
+            pst.setString(6, dts.getState());
+            pst.setString(7, dts.getTypeBedroom());
+            pst.setInt(8, dts.getIdBedrooms());
+            
+            int n=pst.executeUpdate();
+            if (n!=0) {
+                return true;
+            }else {
+                return false;
+            }
+        } catch (SQLException e) {
+            JOptionPane.showConfirmDialog(null, e);
+            return false;
+        }        
+    }   
+    
+        public boolean delete(Vbedrooms dts){
+        sSql = "delete into tb_bedroom  where id_br=?";
+        try {
+            PreparedStatement pst=cn.prepareStatement(sSql);              
+            pst.setInt(1, dts.getIdBedrooms());
+            int n=pst.executeUpdate();
+            if (n!=0) {
+                return true;
+            }else {
+                return false;
+            }
+        } catch (SQLException e) {
+            JOptionPane.showConfirmDialog(null, e);
+            return false;
+        }        
+    }    
 }
