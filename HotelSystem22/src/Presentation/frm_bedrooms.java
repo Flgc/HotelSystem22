@@ -5,6 +5,11 @@
  */
 package Presentation;
 
+import Logic.ConnectFormBedrooms;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+
 /**
  *
  * @author fabio
@@ -68,6 +73,21 @@ public class frm_bedrooms extends javax.swing.JFrame {
         txt_caracteristica.setText("");
         txt_valDiaria.setText("");
     }  
+      
+      void show(String searching){
+          
+          try {
+              DefaultTableModel model;
+              ConnectFormBedrooms func=new ConnectFormBedrooms();
+              model = func.show(searching);
+              TB_Lista.setModel(model);
+              
+              hide_column();
+              lbl_registros.setText("Total Registros "+Integer.toString(func.recordTotal));
+          } catch (Exception e) {
+                 JOptionPane.showConfirmDialog(null, e);
+          }          
+      }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -328,14 +348,13 @@ public class frm_bedrooms extends javax.swing.JFrame {
             .addGroup(jpa_listaQuartosLayout.createSequentialGroup()
                 .addComponent(lbl_cadQuarto1)
                 .addGap(18, 18, 18)
-                .addGroup(jpa_listaQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_pesquisar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jpa_listaQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txt_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_buscar)
-                        .addComponent(btn_sair)
-                        .addComponent(btn_apagar)))
-                .addGap(18, 18, 18)
+                .addGroup(jpa_listaQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_buscar)
+                    .addComponent(btn_sair)
+                    .addComponent(btn_apagar)
+                    .addComponent(lbl_pesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lbl_registros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
