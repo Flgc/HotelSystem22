@@ -5,6 +5,7 @@
  */
 package Presentation;
 
+import Data.Vbedrooms;
 import Logic.ConnectFormBedrooms;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -74,7 +75,7 @@ public class frm_bedrooms extends javax.swing.JFrame {
         txt_valDiaria.setText("");
     }  
       
-      void show(String searching){
+      void showSearch(String searching){
           
           try {
               DefaultTableModel model;
@@ -145,7 +146,18 @@ public class frm_bedrooms extends javax.swing.JFrame {
         lbl_andar.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
         lbl_andar.setText("Andar");
 
+        txt_numero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_numeroActionPerformed(evt);
+            }
+        });
+
         cmb_andar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1°", "2°", "3°", "4°", "5°", "6°", "7°" }));
+        cmb_andar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_andarActionPerformed(evt);
+            }
+        });
 
         lbl_descricao.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
         lbl_descricao.setText("Descrição");
@@ -164,21 +176,42 @@ public class frm_bedrooms extends javax.swing.JFrame {
         lbl_valDiaria.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
         lbl_valDiaria.setText("Valor Diária");
 
+        txt_valDiaria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_valDiariaActionPerformed(evt);
+            }
+        });
+
         lbl_estado.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
         lbl_estado.setText("Estado");
         lbl_estado.setPreferredSize(new java.awt.Dimension(28, 13));
 
         cmb_estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Disponível", "Ocupado", "Manutenção", " " }));
+        cmb_estado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_estadoActionPerformed(evt);
+            }
+        });
 
         lbl_tipoQuarto.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
         lbl_tipoQuarto.setText("Tipo Quarto");
         lbl_tipoQuarto.setPreferredSize(new java.awt.Dimension(28, 13));
 
         cmb_tipoQuarto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Individual", "Família", "Presidencial" }));
+        cmb_tipoQuarto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_tipoQuartoActionPerformed(evt);
+            }
+        });
 
         btn_novo.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
         btn_novo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/novo.GIF"))); // NOI18N
         btn_novo.setText("Novo");
+        btn_novo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_novoActionPerformed(evt);
+            }
+        });
 
         btn_cancelar.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
         btn_cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/cancelar.png"))); // NOI18N
@@ -187,6 +220,11 @@ public class frm_bedrooms extends javax.swing.JFrame {
         btn_salvar.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
         btn_salvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/salvar.png"))); // NOI18N
         btn_salvar.setText("Salvar");
+        btn_salvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_salvarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpa_cadQuartosLayout = new javax.swing.GroupLayout(jpa_cadQuartos);
         jpa_cadQuartos.setLayout(jpa_cadQuartosLayout);
@@ -311,6 +349,11 @@ public class frm_bedrooms extends javax.swing.JFrame {
         btn_apagar.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
         btn_apagar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/salvar.png"))); // NOI18N
         btn_apagar.setText("Apagar");
+        btn_apagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_apagarActionPerformed(evt);
+            }
+        });
 
         lbl_registros.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
         lbl_registros.setText("Registros");
@@ -385,9 +428,104 @@ public class frm_bedrooms extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
-        // TODO add your handling code here:
+       showSearch(txt_pesquisar.getText());
     }//GEN-LAST:event_btn_buscarActionPerformed
 
+    private void btn_novoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_novoActionPerformed
+        componentEnable();
+        btn_salvar.setText("Salvar");
+        action="save";
+    }//GEN-LAST:event_btn_novoActionPerformed
+
+    private void btn_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvarActionPerformed
+        if (txt_numero.getText().length() == 0){
+            JOptionPane.showConfirmDialog(rootPane, "Insira o número do quarto");
+            txt_numero.requestFocus();
+        }
+      
+        if (txt_descricao.getText().length() == 0){
+            JOptionPane.showConfirmDialog(rootPane, "Insira a descrição para o quarto");
+            txt_descricao.requestFocus();
+        } 
+        
+        if (txt_caracteristica.getText().length() == 0){
+            JOptionPane.showConfirmDialog(rootPane, "Insira uma caracteristica para o quarto");
+            txt_caracteristica.requestFocus();
+        } 
+        
+         if (txt_valDiaria.getText().length() == 0){
+            JOptionPane.showConfirmDialog(rootPane, "Insira o valor da diária");
+            txt_valDiaria.requestFocus();
+        }    
+         
+         Vbedrooms dts = new  Vbedrooms();
+         ConnectFormBedrooms func = new ConnectFormBedrooms();
+         
+         dts.setNumber(txt_numero.getText());
+         dts.setValueDaily(Double.parseDouble(txt_valDiaria.getText()));
+         dts.setDescription(txt_descricao.getText());
+         dts.setCharacteristics(txt_caracteristica.getText());
+         
+         int selectedItem = cmb_andar.getSelectedIndex();
+         dts.setFloor((String) cmb_andar.getItemAt(selectedItem));
+         
+         selectedItem = cmb_estado.getSelectedIndex();
+         dts.setFloor((String) cmb_estado.getItemAt(selectedItem));
+         
+         selectedItem = cmb_tipoQuarto.getSelectedIndex();
+         dts.setFloor((String) cmb_tipoQuarto.getItemAt(selectedItem));  
+         
+         
+         if (action.equals("save")){
+             if (func.insert(dts)){
+                 JOptionPane.showConfirmDialog(rootPane, "O Quarto foi registrado com sucesso!");
+                 showSearch("");
+             }
+         }
+         else if(action.equals("edit")){
+             dts.setIdBedrooms(Integer.parseInt(txt_id_br.getText()));
+             if (func.edit(dts)){
+                 JOptionPane.showConfirmDialog(rootPane, "O Quarto foi editado com sucesso!");
+                 showSearch("");
+             }             
+         }
+    }//GEN-LAST:event_btn_salvarActionPerformed
+
+    private void btn_apagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_apagarActionPerformed
+        if(!txt_id_br.getText().equals("")){
+            int confirmation = JOptionPane.showConfirmDialog(rootPane, "Deseja realmente excluir esse quarto?", "Excluir", 2);
+            if (confirmation == 0){
+                ConnectFormBedrooms func = new ConnectFormBedrooms();
+                Vbedrooms dts = new Vbedrooms();
+                dts.setIdBedrooms(Integer.parseInt(txt_id_br.getText()));
+                func.delete(dts);
+                showSearch("");
+                componentDisable();
+            }
+        }
+    }//GEN-LAST:event_btn_apagarActionPerformed
+
+    private void txt_numeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_numeroActionPerformed
+        txt_numero.transferFocus();
+    }//GEN-LAST:event_txt_numeroActionPerformed
+
+    private void cmb_andarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_andarActionPerformed
+        cmb_andar.transferFocus();
+    }//GEN-LAST:event_cmb_andarActionPerformed
+
+    private void txt_valDiariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_valDiariaActionPerformed
+        txt_valDiaria.transferFocus();
+    }//GEN-LAST:event_txt_valDiariaActionPerformed
+
+    private void cmb_estadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_estadoActionPerformed
+        cmb_estado.transferFocus();
+    }//GEN-LAST:event_cmb_estadoActionPerformed
+
+    private void cmb_tipoQuartoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_tipoQuartoActionPerformed
+        cmb_tipoQuarto.transferFocus();
+    }//GEN-LAST:event_cmb_tipoQuartoActionPerformed
+
+    
     /**
      * @param args the command line arguments
      */
