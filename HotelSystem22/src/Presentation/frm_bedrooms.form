@@ -460,6 +460,9 @@
                   </Table>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="TB_ListaMouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -483,6 +486,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Sair"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_sairActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btn_buscar">
           <Properties>

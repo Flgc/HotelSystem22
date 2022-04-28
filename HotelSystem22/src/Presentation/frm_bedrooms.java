@@ -22,6 +22,8 @@ public class frm_bedrooms extends javax.swing.JFrame {
      */
     public frm_bedrooms() {
         initComponents();
+        componentDisable();
+        
     }
     
     private String action="save";
@@ -328,6 +330,11 @@ public class frm_bedrooms extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        TB_Lista.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TB_ListaMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(TB_Lista);
 
         lbl_pesquisar.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
@@ -336,6 +343,11 @@ public class frm_bedrooms extends javax.swing.JFrame {
         btn_sair.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
         btn_sair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/cancelar.png"))); // NOI18N
         btn_sair.setText("Sair");
+        btn_sair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_sairActionPerformed(evt);
+            }
+        });
 
         btn_buscar.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
         btn_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/novo.GIF"))); // NOI18N
@@ -480,13 +492,16 @@ public class frm_bedrooms extends javax.swing.JFrame {
              if (func.insert(dts)){
                  JOptionPane.showConfirmDialog(rootPane, "O Quarto foi registrado com sucesso!");
                  showSearch("");
+                 componentDisable();
              }
          }
          else if(action.equals("edit")){
              dts.setIdBedrooms(Integer.parseInt(txt_id_br.getText()));
+             
              if (func.edit(dts)){
                  JOptionPane.showConfirmDialog(rootPane, "O Quarto foi editado com sucesso!");
                  showSearch("");
+                 componentDisable();
              }             
          }
     }//GEN-LAST:event_btn_salvarActionPerformed
@@ -524,6 +539,28 @@ public class frm_bedrooms extends javax.swing.JFrame {
     private void cmb_tipoQuartoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_tipoQuartoActionPerformed
         cmb_tipoQuarto.transferFocus();
     }//GEN-LAST:event_cmb_tipoQuartoActionPerformed
+
+    private void TB_ListaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TB_ListaMouseClicked
+        btn_salvar.setText("Editar");
+        componentEnable();
+        btn_apagar.setEnabled(true);
+        action="edit";
+        int rowActive = TB_Lista.rowAtPoint(evt.getPoint());
+        
+        txt_id_br.setText(TB_Lista.getValueAt(rowActive, 0).toString());
+        txt_numero.setText(TB_Lista.getValueAt(rowActive, 1).toString());
+        cmb_andar.setSelectedItem(TB_Lista.getValueAt(rowActive, 2).toString());
+        txt_descricao.setText(TB_Lista.getValueAt(rowActive, 3).toString());
+        txt_caracteristica.setText(TB_Lista.getValueAt(rowActive, 4).toString());
+        txt_valDiaria.setText(TB_Lista.getValueAt(rowActive, 5).toString());
+        cmb_estado.setSelectedItem(TB_Lista.getValueAt(rowActive, 6).toString());
+        cmb_tipoQuarto.setSelectedItem(TB_Lista.getValueAt(rowActive, 7).toString());
+        
+    }//GEN-LAST:event_TB_ListaMouseClicked
+
+    private void btn_sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sairActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btn_sairActionPerformed
 
     
     /**
