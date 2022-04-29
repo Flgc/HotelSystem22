@@ -23,7 +23,7 @@ public class frm_bedrooms extends javax.swing.JFrame {
     public frm_bedrooms() {
         initComponents();
         componentDisable();
-        
+        showSearch("null");        
     }
     
     private String action="save";
@@ -45,7 +45,6 @@ public class frm_bedrooms extends javax.swing.JFrame {
         cmb_estado.setVisible(false);
         cmb_tipoQuarto.setVisible(false);
         
-        btn_novo.setEnabled(false);
         btn_salvar.setEnabled(false);
         btn_cancelar.setEnabled(false);
         
@@ -57,7 +56,7 @@ public class frm_bedrooms extends javax.swing.JFrame {
     }
 
       void componentEnable(){
-        txt_id_br.setVisible(true);
+        txt_id_br.setVisible(false);
         txt_numero.setVisible(true);
         cmb_andar.setVisible(true);
         txt_descricao.setVisible(true);
@@ -82,7 +81,7 @@ public class frm_bedrooms extends javax.swing.JFrame {
           try {
               DefaultTableModel model;
               ConnectFormBedrooms func=new ConnectFormBedrooms();
-              model = func.show(searching);
+              model = func.showSearch(searching);
               TB_Lista.setModel(model);
               
               hide_column();
@@ -337,6 +336,8 @@ public class frm_bedrooms extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(TB_Lista);
 
+        txt_pesquisar.setName(""); // NOI18N
+
         lbl_pesquisar.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
         lbl_pesquisar.setText("Pesquisar");
 
@@ -447,26 +448,27 @@ public class frm_bedrooms extends javax.swing.JFrame {
         componentEnable();
         btn_salvar.setText("Salvar");
         action="save";
+        btn_novo.enable(false);
     }//GEN-LAST:event_btn_novoActionPerformed
 
     private void btn_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvarActionPerformed
         if (txt_numero.getText().length() == 0){
-            JOptionPane.showConfirmDialog(rootPane, "Insira o número do quarto");
+            JOptionPane.showMessageDialog(rootPane, "Insira o número do quarto");
             txt_numero.requestFocus();
         }
       
         if (txt_descricao.getText().length() == 0){
-            JOptionPane.showConfirmDialog(rootPane, "Insira a descrição para o quarto");
+            JOptionPane.showMessageDialog(rootPane, "Insira a descrição para o quarto");
             txt_descricao.requestFocus();
         } 
         
         if (txt_caracteristica.getText().length() == 0){
-            JOptionPane.showConfirmDialog(rootPane, "Insira uma caracteristica para o quarto");
+            JOptionPane.showMessageDialog(rootPane, "Insira uma caracteristica para o quarto");
             txt_caracteristica.requestFocus();
         } 
         
          if (txt_valDiaria.getText().length() == 0){
-            JOptionPane.showConfirmDialog(rootPane, "Insira o valor da diária");
+            JOptionPane.showMessageDialog(rootPane, "Insira o valor da diária");
             txt_valDiaria.requestFocus();
         }    
          
@@ -482,15 +484,14 @@ public class frm_bedrooms extends javax.swing.JFrame {
          dts.setFloor((String) cmb_andar.getItemAt(selectedItem));
          
          selectedItem = cmb_estado.getSelectedIndex();
-         dts.setFloor((String) cmb_estado.getItemAt(selectedItem));
+         dts.setState((String) cmb_estado.getItemAt(selectedItem));
          
          selectedItem = cmb_tipoQuarto.getSelectedIndex();
-         dts.setFloor((String) cmb_tipoQuarto.getItemAt(selectedItem));  
-         
+         dts.setTypeBedroom((String) cmb_tipoQuarto.getItemAt(selectedItem));  
          
          if (action.equals("save")){
              if (func.insert(dts)){
-                 JOptionPane.showConfirmDialog(rootPane, "O Quarto foi registrado com sucesso!");
+                 JOptionPane.showMessageDialog(rootPane, "O Quarto foi registrado com sucesso!");
                  showSearch("");
                  componentDisable();
              }
@@ -499,7 +500,7 @@ public class frm_bedrooms extends javax.swing.JFrame {
              dts.setIdBedrooms(Integer.parseInt(txt_id_br.getText()));
              
              if (func.edit(dts)){
-                 JOptionPane.showConfirmDialog(rootPane, "O Quarto foi editado com sucesso!");
+                 JOptionPane.showMessageDialog(rootPane, "O Quarto foi editado com sucesso!");
                  showSearch("");
                  componentDisable();
              }             

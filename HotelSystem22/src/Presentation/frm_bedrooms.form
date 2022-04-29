@@ -467,6 +467,9 @@
           </SubComponents>
         </Container>
         <Component class="javax.swing.JTextField" name="txt_pesquisar">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="" noResource="true"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lbl_pesquisar">
           <Properties>

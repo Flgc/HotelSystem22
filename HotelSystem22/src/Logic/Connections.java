@@ -14,16 +14,16 @@ import javax.swing.JOptionPane;
  *
  * @author fabio
  */
-public class Connect {
+public class Connections {
     public String db="dbreserves";
     public String url="jdbc:mysql://localhost/"+db;
     public String user="fabio";
     public String pass="mysql2021";          
     
-    public Connect() {        
+    public Connections() {        
     }
     
-    public Connection connection(){
+    public Connection connect(){
         Connection link=null;
         try {
             Class.forName("org.gjt.mm.mysql.Driver");

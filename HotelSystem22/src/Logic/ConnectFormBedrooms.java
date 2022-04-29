@@ -19,15 +19,15 @@ import javax.swing.table.DefaultTableModel;
  * @author fabio
  */
 public class ConnectFormBedrooms {    
-    private Connect mysql=new Connect();
-    private Connection cn=mysql.connection();
+    private Connections mysql=new Connections();
+    private Connection cn=mysql.connect();
     private String sSql="";
     public Integer recordTotal;
     
-    public DefaultTableModel show(String searching){
+    public DefaultTableModel showSearch(String searching){
         
         DefaultTableModel model;
-        String [ ] titles = {"ID", "Number", "Floor", "Description", "Characteristics", "Price", "State","TypeBedroom"};
+        String [ ] titles = {"ID", "Número", "Andar", "Descrição", "Característica", "Preço", "Estado","Tipo"};
         String [ ] records = new String[8];
         recordTotal = 0;
         
@@ -85,8 +85,8 @@ public class ConnectFormBedrooms {
     }
 
     public boolean edit(Vbedrooms dts){
-        sSql = "update into tb_bedroom  set number_br=?,  floor_br= , description_br=?, characteristics_br=?,"
-                + "dialy_Price_br=?, state_br=?, type_br=? where id_br=?";
+        sSql = "update tb_bedroom  set number_br=?,  floor_br=?,  description_br=?,  characteristics_br=?, "
+                + "dialy_Price_br=?, state_br=?,  type_br=? where id_br=?";
         try {
             PreparedStatement pst=cn.prepareStatement(sSql);
             // update record  on fields
@@ -112,7 +112,7 @@ public class ConnectFormBedrooms {
     }   
     
         public boolean delete(Vbedrooms dts){
-        sSql = "delete into tb_bedroom  where id_br=?";
+        sSql = "delete from tb_bedroom  where id_br=?";
         try {
             PreparedStatement pst=cn.prepareStatement(sSql);              
             pst.setInt(1, dts.getIdBedrooms());
