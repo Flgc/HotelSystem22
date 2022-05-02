@@ -24,6 +24,7 @@ public class frm_bedrooms extends javax.swing.JFrame {
         initComponents();
         componentDisable();
         showSearch("null");        
+        this.setLocationRelativeTo(null);    
     }
     
     private String action="save";
@@ -134,6 +135,7 @@ public class frm_bedrooms extends javax.swing.JFrame {
         lbl_registros = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cadastro de Quartos");
         setBackground(new java.awt.Color(240, 240, 240));
 
         jpa_cadQuartos.setForeground(new java.awt.Color(204, 204, 204));
@@ -216,7 +218,12 @@ public class frm_bedrooms extends javax.swing.JFrame {
 
         btn_cancelar.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
         btn_cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/cancelar.png"))); // NOI18N
-        btn_cancelar.setText("Cancelar");
+        btn_cancelar.setText("Limpar");
+        btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cancelarActionPerformed(evt);
+            }
+        });
 
         btn_salvar.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
         btn_salvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/salvar.png"))); // NOI18N
@@ -563,6 +570,17 @@ public class frm_bedrooms extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btn_sairActionPerformed
 
+    private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
+        cleanField();
+    }//GEN-LAST:event_btn_cancelarActionPerformed
+
+    void cleanField(){
+        txt_id_br.setText("");
+        txt_numero.setText("");
+        txt_descricao.setText("");
+        txt_caracteristica.setText("");
+        txt_valDiaria.setText("");
+    }
     
     /**
      * @param args the command line arguments
