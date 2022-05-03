@@ -1,0 +1,110 @@
+-- dbreserves.tb_bedroom definition
+
+CREATE TABLE `tb_bedroom` (
+  `id_br` int NOT NULL AUTO_INCREMENT,
+  `number_br` varchar(4) NOT NULL,
+  `floor_br` varchar(3) NOT NULL,
+  `description_br` varchar(255) DEFAULT NULL,
+  `characteristics_br` varchar(512) DEFAULT NULL,
+  `dialy_Price_br` decimal(10,2) DEFAULT NULL,
+  `state_br` varchar(15) NOT NULL,
+  `type_br` varchar(30) NOT NULL,
+  PRIMARY KEY (`id_br`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- dbreserves.tb_people definition
+
+CREATE TABLE `tb_people` (
+  `id_peop` int NOT NULL AUTO_INCREMENT,
+  `name_peop` varchar(45) NOT NULL,
+  `father_peop` varchar(45) DEFAULT NULL,
+  `mother_peop` varchar(45) DEFAULT NULL,
+  `typeDocum_peop` varchar(45) DEFAULT NULL,
+  `document_peop` varchar(45) DEFAULT NULL,
+  `adress_peop` varchar(45) DEFAULT NULL,
+  `phone_peop` varchar(45) DEFAULT NULL,
+  `email_peop` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id_peop`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- dbreserves.tb_client definition
+
+CREATE TABLE `tb_client` (
+  `id_peop` int NOT NULL,
+  `cod_cli` varchar(45) NOT NULL UNIQUE,
+  PRIMARY KEY (`id_peop`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- dbreserves.tb_employee definition
+
+CREATE TABLE `tb_employee` (
+  `id_peop` int NOT NULL,
+  `salary_empl` DECIMAL(7,2) NOT NULL,
+  `acess_empl` varchar(45) NOT NULL,
+  `login_empl` varchar(45) DEFAULT NULL,
+  `password_empl` varchar(45) DEFAULT NULL,
+  `state_empl` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`id_peop`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- dbreserves.tb_product definition
+
+CREATE TABLE `tb_product` (
+  `id_prod` int NOT NULL AUTO_INCREMENT,
+  `name_prod` varchar(45) NOT NULL,
+  `descript_prod` varchar(45) DEFAULT NULL,
+  `und_prod` varchar(45) DEFAULT NULL,
+  `price_prod` decimal(7,2) DEFAULT NULL,
+  PRIMARY KEY (`id_prod`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- dbreserves.tb_reservations definition
+
+CREATE TABLE `tb_reservations` (
+  `id_res` int NOT NULL AUTO_INCREMENT,
+  `id_bedroom` int NOT NULL,
+  `id_client` int NOT NULL,
+  `id_employee` int NOT NULL,
+  `type_res` varchar(25) NOT NULL,
+  `date_res` date,
+  `date_checkin_res` date,
+  `date_exit_res` date,
+  `value_bedroom_res` decimal(7,2) NOT NULL,
+  `state_res` varchar(45) NOT NULL,
+  PRIMARY KEY (`id_res`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+-- dbreserves.tb_consum definition
+
+CREATE TABLE `tb_consum` (
+  `id_con` int NOT NULL AUTO_INCREMENT,
+  `id_reservat` int NOT NULL,
+  `id_product` int NOT NULL,
+  `quantity_con` decimal(7,2) NOT NULL,
+  `price_con` decimal(7,2) NOT NULL,
+  `state_res` varchar(45) NOT NULL,
+  PRIMARY KEY (`id_con`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- dbreserves.tb_payment definition
+
+CREATE TABLE `tb_payment` (
+  `id_pay` int NOT NULL AUTO_INCREMENT,
+  `id_reservat` int NOT NULL,
+  `type_pay` varchar(25) NOT NULL,
+  `number_pay` int NOT NULL,
+  `rate_pay` decimal(4,2),
+  `total_pay` decimal(7,2) NOT NULL,
+  `date_pay` date  NOT NULL,
+  `emission_pay` date NOT NULL,
+  PRIMARY KEY (`id_pay`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+ALTER TABLE dbreserves.tb_employee ADD CONSTRAINT FK_employee_people FOREIGN KEY (id_peop) REFERENCES dbreserves.tb_people(id_peop);
+ALTER TABLE dbreserves.tb_client ADD CONSTRAINT FK_client_people FOREIGN KEY (id_peop) REFERENCES dbreserves.tb_people(id_peop);
+ALTER TABLE dbreserves.tb_reservations ADD CONSTRAINT FK_reservations_bedroom FOREIGN KEY (id_bedroom) REFERENCES dbreserves.tb_bedroom(id_br);
+ALTER TABLE dbreserves.tb_reservations ADD CONSTRAINT FK_reservations_client FOREIGN KEY (id_client) REFERENCES dbreserves.tb_client(id_peop);
+ALTER TABLE dbreserves.tb_reservations ADD CONSTRAINT FK_reservations_employee FOREIGN KEY (id_employee) REFERENCES dbreserves.tb_employee(id_peop);
+
