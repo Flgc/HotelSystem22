@@ -6,7 +6,7 @@
 package Presentation;
 
 import Data.Vproducts;
-import Logic.ConnectFormBedrooms;
+import Logic.ConnectFormProducts;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -25,6 +25,70 @@ public class frm_products extends javax.swing.JFrame {
         showSearch("null");        
         this.setLocationRelativeTo(null);           
     }
+
+    private String action="save";
+    
+    //Disable table colum
+    void  hide_column(){
+         TB_Lista.getColumnModel().getColumn(0).setMaxWidth(0);
+         TB_Lista.getColumnModel().getColumn(0).setMinWidth(0);
+         TB_Lista.getColumnModel().getColumn(0).setPreferredWidth(0);
+    }
+    
+    void componentDisable(){
+        txt_id_prod.setVisible(false);
+        txt_name_prod.setVisible(false);
+        cmb_und_prod.setVisible(false);
+        txt_descript_prod.setVisible(false);
+        txt_price_prod.setVisible(false);
+        
+        btn_salvar.setEnabled(false);
+        btn_cancelar.setEnabled(false);
+        
+        txt_id_prod.setText("");
+        txt_name_prod.setText("");
+        txt_descript_prod.setText("");
+        txt_price_prod.setText("");
+    }
+
+      void componentEnable(){
+        txt_id_prod.setVisible(false);
+        txt_name_prod.setVisible(true);
+        cmb_und_prod.setVisible(true);
+        txt_descript_prod.setVisible(true);
+        txt_price_prod.setVisible(true);
+        
+        btn_novo.setEnabled(true);
+        btn_salvar.setEnabled(true);
+        btn_cancelar.setEnabled(true);
+        
+        txt_id_prod.setText("");
+        txt_name_prod.setText("");
+        txt_descript_prod.setText("");
+        txt_price_prod.setText("");
+    }  
+      
+      void showSearch(String searching){
+          
+          try {
+              DefaultTableModel model;
+              ConnectFormProducts func=new ConnectFormProducts();
+              model = func.showSearch(searching);
+              TB_Lista.setModel(model);
+              
+              hide_column();
+              lbl_registros.setText("Total Registros "+Integer.toString(func.recordTotal));
+          } catch (Exception e) {
+                 JOptionPane.showConfirmDialog(null, e);
+          }          
+      } 
+
+    void cleanField(){
+        txt_id_prod.setText("");
+        txt_name_prod.setText("");
+        txt_descript_prod.setText("");
+        txt_price_prod.setText("");
+    }      
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,9 +110,6 @@ public class frm_products extends javax.swing.JFrame {
         lbl_price = new javax.swing.JLabel();
         txt_price_prod = new javax.swing.JTextField();
         cmb_und_prod = new javax.swing.JComboBox<>();
-        btn_novo = new javax.swing.JButton();
-        btn_cancelar = new javax.swing.JButton();
-        btn_salvar = new javax.swing.JButton();
         txt_id_prod = new javax.swing.JTextField();
         jpa_listaQuartos = new javax.swing.JPanel();
         lbl_listaProdutos = new javax.swing.JLabel();
@@ -60,6 +121,9 @@ public class frm_products extends javax.swing.JFrame {
         btn_buscar = new javax.swing.JButton();
         btn_apagar = new javax.swing.JButton();
         lbl_registros = new javax.swing.JLabel();
+        btn_novo = new javax.swing.JButton();
+        btn_salvar = new javax.swing.JButton();
+        btn_cancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro de Produtos");
@@ -97,37 +161,10 @@ public class frm_products extends javax.swing.JFrame {
             }
         });
 
-        cmb_und_prod.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Disponível", "Ocupado", "Manutenção", " " }));
+        cmb_und_prod.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "KG", "UNIDADE", "LITROS", "MINUTOS", "GLOBAL", " ", " " }));
         cmb_und_prod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmb_und_prodActionPerformed(evt);
-            }
-        });
-
-        btn_novo.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
-        btn_novo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/novo.GIF"))); // NOI18N
-        btn_novo.setText("Novo");
-        btn_novo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_novoActionPerformed(evt);
-            }
-        });
-
-        btn_cancelar.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
-        btn_cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/cancelar.png"))); // NOI18N
-        btn_cancelar.setText("Limpar");
-        btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_cancelarActionPerformed(evt);
-            }
-        });
-
-        btn_salvar.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
-        btn_salvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/salvar.png"))); // NOI18N
-        btn_salvar.setText("Salvar");
-        btn_salvar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_salvarActionPerformed(evt);
             }
         });
 
@@ -138,10 +175,18 @@ public class frm_products extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpa_cadQuartosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpa_cadQuartosLayout.createSequentialGroup()
+                    .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
                         .addComponent(lbl_cadProd)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txt_id_prod, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
+                        .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_name)
+                            .addComponent(lbl_descricao))
+                        .addGap(23, 23, 23)
+                        .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jsc_descricao, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
+                            .addComponent(txt_name_prod)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpa_cadQuartosLayout.createSequentialGroup()
                         .addComponent(lbl_und)
                         .addGap(23, 23, 23)
@@ -149,23 +194,8 @@ public class frm_products extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lbl_price)
                         .addGap(1, 1, 1)
-                        .addComponent(txt_price_prod))
-                    .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btn_novo, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btn_salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
-                        .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_name)
-                            .addComponent(lbl_descricao))
-                        .addGap(23, 23, 23)
-                        .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jsc_descricao)
-                            .addComponent(txt_name_prod))))
-                .addGap(54, 54, 54))
+                        .addComponent(txt_price_prod)))
+                .addContainerGap())
         );
         jpa_cadQuartosLayout.setVerticalGroup(
             jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,12 +220,7 @@ public class frm_products extends javax.swing.JFrame {
                     .addComponent(cmb_und_prod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_und)
                     .addComponent(txt_price_prod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
-                .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_novo)
-                    .addComponent(btn_cancelar)
-                    .addComponent(btn_salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         jpa_listaQuartos.setForeground(new java.awt.Color(204, 204, 204));
@@ -262,27 +287,22 @@ public class frm_products extends javax.swing.JFrame {
             jpa_listaQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpa_listaQuartosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jpa_listaQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE)
-                    .addGroup(jpa_listaQuartosLayout.createSequentialGroup()
-                        .addGroup(jpa_listaQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_listaProdutos)
-                            .addGroup(jpa_listaQuartosLayout.createSequentialGroup()
-                                .addComponent(lbl_pesquisar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txt_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn_buscar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btn_apagar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btn_sair)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpa_listaQuartosLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbl_registros)
-                .addGap(31, 31, 31))
+                .addGroup(jpa_listaQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lbl_registros)
+                    .addGroup(jpa_listaQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 617, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl_listaProdutos)
+                        .addGroup(jpa_listaQuartosLayout.createSequentialGroup()
+                            .addComponent(lbl_pesquisar)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(txt_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btn_buscar)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(btn_apagar)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(btn_sair))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jpa_listaQuartosLayout.setVerticalGroup(
             jpa_listaQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -295,12 +315,39 @@ public class frm_products extends javax.swing.JFrame {
                     .addComponent(btn_sair)
                     .addComponent(btn_apagar)
                     .addComponent(lbl_pesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(lbl_registros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_registros, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
                 .addGap(15, 15, 15))
         );
+
+        btn_novo.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
+        btn_novo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/novo.GIF"))); // NOI18N
+        btn_novo.setText("Novo");
+        btn_novo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_novoActionPerformed(evt);
+            }
+        });
+
+        btn_salvar.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
+        btn_salvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/salvar.png"))); // NOI18N
+        btn_salvar.setText("Salvar");
+        btn_salvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_salvarActionPerformed(evt);
+            }
+        });
+
+        btn_cancelar.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
+        btn_cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/cancelar.png"))); // NOI18N
+        btn_cancelar.setText("Limpar");
+        btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -308,19 +355,32 @@ public class frm_products extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jpa_cadQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jpa_cadQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(btn_novo, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpa_listaQuartos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jpa_listaQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jpa_cadQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addComponent(jpa_cadQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_novo)
+                            .addComponent(btn_cancelar)
+                            .addComponent(btn_salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jpa_listaQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         pack();
@@ -335,13 +395,9 @@ public class frm_products extends javax.swing.JFrame {
 
         txt_id_prod.setText(TB_Lista.getValueAt(rowActive, 0).toString());
         txt_name_prod.setText(TB_Lista.getValueAt(rowActive, 1).toString());
-        cmb_andar.setSelectedItem(TB_Lista.getValueAt(rowActive, 2).toString());
-        txt_descript_prod.setText(TB_Lista.getValueAt(rowActive, 3).toString());
-        txt_caracteristica.setText(TB_Lista.getValueAt(rowActive, 4).toString());
-        txt_price_prod.setText(TB_Lista.getValueAt(rowActive, 5).toString());
-        cmb_und_prod.setSelectedItem(TB_Lista.getValueAt(rowActive, 6).toString());
-        cmb_tipoQuarto.setSelectedItem(TB_Lista.getValueAt(rowActive, 7).toString());
-
+        txt_descript_prod.setText(TB_Lista.getValueAt(rowActive, 2).toString());
+        cmb_und_prod.setSelectedItem(TB_Lista.getValueAt(rowActive, 3).toString());
+        txt_price_prod.setText(TB_Lista.getValueAt(rowActive, 4).toString());      
     }//GEN-LAST:event_TB_ListaMouseClicked
 
     private void btn_sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sairActionPerformed
@@ -354,11 +410,11 @@ public class frm_products extends javax.swing.JFrame {
 
     private void btn_apagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_apagarActionPerformed
         if(!txt_id_prod.getText().equals("")){
-            int confirmation = JOptionPane.showConfirmDialog(rootPane, "Deseja realmente excluir esse quarto?", "Excluir", 2);
+            int confirmation = JOptionPane.showConfirmDialog(rootPane, "Deseja realmente excluir esse registro?", "Excluir", 2);
             if (confirmation == 0){
-                ConnectFormBedrooms func = new ConnectFormBedrooms();
-                Vbedrooms dts = new Vbedrooms();
-                dts.setIdBedrooms(Integer.parseInt(txt_id_prod.getText()));
+                ConnectFormProducts func = new ConnectFormProducts();
+                Vproducts dts = new Vproducts();
+                dts.setIdproduct(Integer.parseInt(txt_id_prod.getText()));
                 func.delete(dts);
                 showSearch("");
                 componentDisable();
@@ -368,54 +424,43 @@ public class frm_products extends javax.swing.JFrame {
 
     private void btn_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvarActionPerformed
         if (txt_name_prod.getText().length() == 0){
-            JOptionPane.showMessageDialog(rootPane, "Insira o número do quarto");
+            JOptionPane.showMessageDialog(rootPane, "Insira o nome do produto");
             txt_name_prod.requestFocus();
         }
 
         if (txt_descript_prod.getText().length() == 0){
-            JOptionPane.showMessageDialog(rootPane, "Insira a descrição para o quarto");
+            JOptionPane.showMessageDialog(rootPane, "Insira a descrição para o produto");
             txt_descript_prod.requestFocus();
         }
 
-        if (txt_caracteristica.getText().length() == 0){
-            JOptionPane.showMessageDialog(rootPane, "Insira uma caracteristica para o quarto");
-            txt_caracteristica.requestFocus();
-        }
-
         if (txt_price_prod.getText().length() == 0){
-            JOptionPane.showMessageDialog(rootPane, "Insira o valor da diária");
+            JOptionPane.showMessageDialog(rootPane, "Insira o valor do produto");
             txt_price_prod.requestFocus();
         }
 
-        Vbedrooms dts = new  Vbedrooms();
-        ConnectFormBedrooms func = new ConnectFormBedrooms();
+        Vproducts dts = new  Vproducts();
+        ConnectFormProducts func = new ConnectFormProducts();
 
-        dts.setNumber(txt_name_prod.getText());
-        dts.setValueDaily(Double.parseDouble(txt_price_prod.getText()));
+        dts.setName(txt_name_prod.getText());
+        dts.setPriceProduct(Double.parseDouble(txt_price_prod.getText()));
         dts.setDescription(txt_descript_prod.getText());
-        dts.setCharacteristics(txt_caracteristica.getText());
 
-        int selectedItem = cmb_andar.getSelectedIndex();
-        dts.setFloor((String) cmb_andar.getItemAt(selectedItem));
-
+        int selectedItem = cmb_und_prod.getSelectedIndex();
         selectedItem = cmb_und_prod.getSelectedIndex();
-        dts.setState((String) cmb_und_prod.getItemAt(selectedItem));
-
-        selectedItem = cmb_tipoQuarto.getSelectedIndex();
-        dts.setTypeBedroom((String) cmb_tipoQuarto.getItemAt(selectedItem));
+        dts.setUnd((String) cmb_und_prod.getItemAt(selectedItem));
 
         if (action.equals("save")){
             if (func.insert(dts)){
-                JOptionPane.showMessageDialog(rootPane, "O Quarto foi registrado com sucesso!");
+                JOptionPane.showMessageDialog(rootPane, "O Produto foi registrado com sucesso!");
                 showSearch("");
                 componentDisable();
             }
         }
         else if(action.equals("edit")){
-            dts.setIdBedrooms(Integer.parseInt(txt_id_prod.getText()));
+            dts.setIdproduct(Integer.parseInt(txt_id_prod.getText()));
 
             if (func.edit(dts)){
-                JOptionPane.showMessageDialog(rootPane, "O Quarto foi editado com sucesso!");
+                JOptionPane.showMessageDialog(rootPane, "O Produto foi editado com sucesso!");
                 showSearch("");
                 componentDisable();
             }

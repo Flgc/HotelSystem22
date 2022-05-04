@@ -79,8 +79,8 @@ public class ConnectFormProducts {
     }
 
     public boolean edit(Vproducts dts){
-        sSql = "update tb_product  set name_prod=?,  descript_prod=?,  und_prod=?,  price_prod=?, "
-                + " where id_prod=?";
+        sSql = "update tb_product  set name_prod=?,  descript_prod=?,  und_prod=?,  price_prod=?"+
+                " where id_prod=?";
         try {
             PreparedStatement pst=cn.prepareStatement(sSql);
             // update record  on fields
