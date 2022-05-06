@@ -108,3 +108,6 @@ ALTER TABLE dbreserves.tb_reservations ADD CONSTRAINT FK_reservations_bedroom FO
 ALTER TABLE dbreserves.tb_reservations ADD CONSTRAINT FK_reservations_client FOREIGN KEY (id_client) REFERENCES dbreserves.tb_client(id_peop);
 ALTER TABLE dbreserves.tb_reservations ADD CONSTRAINT FK_reservations_employee FOREIGN KEY (id_employee) REFERENCES dbreserves.tb_employee(id_peop);
 
+
+
+
