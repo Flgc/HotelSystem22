@@ -475,7 +475,7 @@ public class frm_products extends javax.swing.JFrame {
         componentEnable();
         btn_salvar.setText("Salvar");
         action="save";
-        btn_novo.enable(false);
+        btn_novo.setEnabled(false);
     }//GEN-LAST:event_btn_novoActionPerformed
 
     private void cmb_und_prodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_und_prodActionPerformed

@@ -67,9 +67,9 @@ public class ConnectClient {
     }  
     
     public boolean insert(Vclients dts){
-        sSql = "insert into tb_employee  (name_peop, father_peop, mother_peop, typeDocum_peop,"
-                + " document_peop, adress_peop, phone_peop, email_peop) values(?,?,?,?,?,?,?,?)";
-        sSql2 = "insert into tb_client  (id_peop, cod_cli) values(select id_peop  from tb_employee order by id_peop desc limit 1,?)";        
+        sSql = "insert into tb_people  (name_peop,father_peop,mother_peop,typeDocum_peop,"
+                + " document_peop,adress_peop,phone_peop,email_peop) values(?,?,?,?,?,?,?,?)";
+        sSql2 = "insert into tb_client  (id_peop, cod_cli) values((select id_peop  from tb_people order by id_peop desc limit 1),?)";        
         
         try {
             PreparedStatement pst=cn.prepareStatement(sSql);
@@ -84,13 +84,13 @@ public class ConnectClient {
             pst.setString(7, dts.getPhone());
             pst.setString(8, dts.getEmail());
             
-            pst2.setString(9, dts.getCodClient());
+           pst2.setString(1, dts.getCodClient());
             
             int n=pst.executeUpdate();
             if (n!=0) {
                 int n2=pst2.executeUpdate();
                 if (n2!=0) {
-                    return true;
+                   return true;
                 } 
                 else {
                     return false;

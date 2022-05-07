@@ -455,7 +455,6 @@ public class frm_bedrooms extends javax.swing.JFrame {
         componentEnable();
         btn_salvar.setText("Salvar");
         action="save";
-        btn_novo.enable(false);
     }//GEN-LAST:event_btn_novoActionPerformed
 
     private void btn_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvarActionPerformed
@@ -516,7 +515,7 @@ public class frm_bedrooms extends javax.swing.JFrame {
 
     private void btn_apagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_apagarActionPerformed
         if(!txt_id_br.getText().equals("")){
-            int confirmation = JOptionPane.showConfirmDialog(rootPane, "Deseja realmente excluir esse quarto?", "Excluir", 2);
+            int confirmation = JOptionPane.showConfirmDialog(rootPane, "Deseja realmente excluir esse registro?", "Excluir", 2);
             if (confirmation == 0){
                 ConnectFormBedrooms func = new ConnectFormBedrooms();
                 Vbedrooms dts = new Vbedrooms();
