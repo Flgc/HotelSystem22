@@ -53,20 +53,24 @@ public class frm_menu extends javax.swing.JFrame {
         menuSystem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/Inicio.png"))); // NOI18N
         menuSystem.setMnemonic('f');
         menuSystem.setText("Sistema");
+        menuSystem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuBar.add(menuSystem);
 
         menuFile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/arquivo.png"))); // NOI18N
         menuFile.setMnemonic('e');
         menuFile.setText("Arquivo");
+        menuFile.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         subMenuBedrooms.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/quartos.png"))); // NOI18N
         subMenuBedrooms.setMnemonic('t');
         subMenuBedrooms.setText("Quartos");
+        subMenuBedrooms.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuFile.add(subMenuBedrooms);
 
         subMenuProducts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/produtos.png"))); // NOI18N
         subMenuProducts.setMnemonic('y');
         subMenuProducts.setText("Produtos");
+        subMenuProducts.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuFile.add(subMenuProducts);
 
         menuBar.add(menuFile);
@@ -74,15 +78,18 @@ public class frm_menu extends javax.swing.JFrame {
         menuReservation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/Reservas.png"))); // NOI18N
         menuReservation.setMnemonic('h');
         menuReservation.setText("Reservas");
+        menuReservation.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         subMenuReservasConsumption.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/reservas-consumos.png"))); // NOI18N
         subMenuReservasConsumption.setMnemonic('c');
         subMenuReservasConsumption.setText("Reservas e Consumos");
+        subMenuReservasConsumption.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuReservation.add(subMenuReservasConsumption);
 
         subMenuClient.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/clientes.png"))); // NOI18N
         subMenuClient.setMnemonic('a');
         subMenuClient.setText("Clientes");
+        subMenuClient.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         subMenuClient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 subMenuClientActionPerformed(evt);
@@ -92,33 +99,40 @@ public class frm_menu extends javax.swing.JFrame {
 
         subMenuPayment.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/pagamentos.png"))); // NOI18N
         subMenuPayment.setText("Pagamentos");
+        subMenuPayment.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuReservation.add(subMenuPayment);
 
         menuBar.add(menuReservation);
 
         menuQuery.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/buscar.png"))); // NOI18N
         menuQuery.setText("Consultas");
+        menuQuery.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuBar.add(menuQuery);
 
         subMenuUserAndAcecessory.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/configurações.png"))); // NOI18N
         subMenuUserAndAcecessory.setText("Configurações");
+        subMenuUserAndAcecessory.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/restringir usuario 32x32.png"))); // NOI18N
         jMenuItem1.setText("Usuários e Acessos");
+        jMenuItem1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         subMenuUserAndAcecessory.add(jMenuItem1);
 
         menuBar.add(subMenuUserAndAcecessory);
 
         menuTools.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/ferramentas.png"))); // NOI18N
         menuTools.setText("Ferramentas");
+        menuTools.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuBar.add(menuTools);
 
         menuHelp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/ajuda.png"))); // NOI18N
         menuHelp.setText("Ajuda");
+        menuHelp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuBar.add(menuHelp);
 
         menuExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/sair.png"))); // NOI18N
         menuExit.setText("Sair");
+        menuExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuBar.add(menuExit);
 
         setJMenuBar(menuBar);
