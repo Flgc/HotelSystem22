@@ -76,6 +76,11 @@ public class frm_menu extends javax.swing.JFrame {
         subMenuProducts.setMnemonic('y');
         subMenuProducts.setText("Produtos");
         subMenuProducts.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        subMenuProducts.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subMenuProductsActionPerformed(evt);
+            }
+        });
         menuFile.add(subMenuProducts);
 
         menuBar.add(menuFile);
@@ -166,6 +171,13 @@ public class frm_menu extends javax.swing.JFrame {
         form.toFront();
         form.setVisible(true);
     }//GEN-LAST:event_subMenuBedroomsActionPerformed
+
+    private void subMenuProductsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subMenuProductsActionPerformed
+        frm_products form = new frm_products();
+        desktopPaneMenu.add(form);
+        form.toFront();
+        form.setVisible(true);
+    }//GEN-LAST:event_subMenuProductsActionPerformed
 
     /**
      * @param args the command line arguments

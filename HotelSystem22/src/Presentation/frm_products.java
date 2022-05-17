@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author fabio
  */
-public class frm_products extends javax.swing.JFrame {
+public class frm_products extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form frm_products
@@ -23,7 +23,7 @@ public class frm_products extends javax.swing.JFrame {
         initComponents();
         componentDisable();
         showSearch("null");        
-        this.setLocationRelativeTo(null);           
+        //this.setLocationRelativeTo(null);           
     }
 
     private String action="save";
@@ -125,7 +125,10 @@ public class frm_products extends javax.swing.JFrame {
         btn_salvar = new javax.swing.JButton();
         btn_cancelar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconifiable(true);
+        setMaximizable(true);
         setTitle("Cadastro de Produtos");
 
         jpa_cadQuartos.setForeground(new java.awt.Color(204, 204, 204));
