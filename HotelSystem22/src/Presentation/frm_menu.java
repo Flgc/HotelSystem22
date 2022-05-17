@@ -65,6 +65,11 @@ public class frm_menu extends javax.swing.JFrame {
         subMenuBedrooms.setMnemonic('t');
         subMenuBedrooms.setText("Quartos");
         subMenuBedrooms.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        subMenuBedrooms.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subMenuBedroomsActionPerformed(evt);
+            }
+        });
         menuFile.add(subMenuBedrooms);
 
         subMenuProducts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/produtos.png"))); // NOI18N
@@ -154,6 +159,13 @@ public class frm_menu extends javax.swing.JFrame {
     private void subMenuClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subMenuClientActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_subMenuClientActionPerformed
+
+    private void subMenuBedroomsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subMenuBedroomsActionPerformed
+        frm_bedrooms form = new frm_bedrooms();
+        desktopPaneMenu.add(form);
+        form.toFront();
+        form.setVisible(true);
+    }//GEN-LAST:event_subMenuBedroomsActionPerformed
 
     /**
      * @param args the command line arguments

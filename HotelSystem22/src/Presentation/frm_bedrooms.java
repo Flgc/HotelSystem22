@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author fabio
  */
-public class frm_bedrooms extends javax.swing.JFrame {
+public class frm_bedrooms extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form frm_bedrooms
@@ -24,7 +24,7 @@ public class frm_bedrooms extends javax.swing.JFrame {
         initComponents();
         componentDisable();
         showSearch("null");        
-        this.setLocationRelativeTo(null);    
+        //this.setLocationRelativeTo(null);    
     }
     
     private String action="save";
@@ -134,9 +134,11 @@ public class frm_bedrooms extends javax.swing.JFrame {
         btn_apagar = new javax.swing.JButton();
         lbl_registros = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Cadastro de Quartos");
         setBackground(new java.awt.Color(240, 240, 240));
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setTitle("Cadastro de Quartos");
 
         jpa_cadQuartos.setForeground(new java.awt.Color(204, 204, 204));
 
