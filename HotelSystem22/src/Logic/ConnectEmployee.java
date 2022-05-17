@@ -75,7 +75,7 @@ public class ConnectEmployee {
         sSql = "insert into tb_people  (name_peop,father_peop,mother_peop,typeDocum_peop,"
                 + " document_peop,adress_peop,phone_peop,email_peop) values(?,?,?,?,?,?,?,?)";
         sSql2 = "insert into tb_employee  (id_peop, salary_empl, acess_empl, login_empl, password_empl, "
-                + "state_empl) values((select id_peop  from tb_people order by id_peop desc limit 1),?,?,?,?,?,?)";        
+                + "state_empl) values((select id_peop  from tb_people order by id_peop desc limit 1),?,?,?,?,?)";        
         
         try {
             PreparedStatement pst=cn.prepareStatement(sSql);
@@ -140,7 +140,7 @@ public class ConnectEmployee {
             pst2.setString(3, dts.getLogin());
             pst2.setString(4, dts.getPassword());
             pst2.setString(5, dts.getState());   
-            pst2.setInt(6, dts.getIdpeop());
+            //pst2.setInt(6, dts.getIdpeop());
             
             
             int n=pst.executeUpdate();

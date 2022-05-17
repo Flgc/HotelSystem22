@@ -5,9 +5,8 @@
  */
 package Presentation;
 
-import Data.Vbedrooms;
-import Data.Vclients;
-import Logic.ConnectClient;
+import Data.Vemployee;
+import Logic.ConnectEmployee;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -15,12 +14,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author fabio
  */
-public class frm_clients extends javax.swing.JFrame {
+public class frm_employee extends javax.swing.JFrame {
 
     /**
-     * Creates new form frm_clients
+     * Creates new form frm_employee
      */
-    public frm_clients() {
+    public frm_employee() {
         initComponents();
         componentDisable();
         showSearch("null");        
@@ -43,10 +42,16 @@ public class frm_clients extends javax.swing.JFrame {
         txt_mother_peop.setVisible(false);
         txt_adress_peop.setVisible(false);
         txt_docum_peop.setVisible(false);
-        cmb_typeDocum_peop.setVisible(false);
+        cmb_acess_empl.setVisible(false);
         txt_phone_peop.setVisible(false);
         txt_cod_cli.setVisible(false);
         txt_email_peop.setVisible(false);
+        
+        txt_salary_empl.setVisible(false);
+        txt_password_empl.setVisible(false);
+        txt_login_empl.setVisible(false);
+        cmb_state_empl.setVisible(false);
+        cmb_acess_empl.setVisible(false);     
         
         btn_salvar.setEnabled(false);
         btn_cancelar.setEnabled(false);
@@ -60,6 +65,10 @@ public class frm_clients extends javax.swing.JFrame {
         txt_phone_peop.setText("");
         txt_cod_cli.setText("");
         txt_email_peop.setText("");
+        
+        txt_salary_empl.setText("");
+        txt_password_empl.setText("");
+        txt_login_empl.setText("");
     }
 
       void componentEnable(){
@@ -69,10 +78,16 @@ public class frm_clients extends javax.swing.JFrame {
         txt_mother_peop.setVisible(true);
         txt_adress_peop.setVisible(true);
         txt_docum_peop.setVisible(true);
-        cmb_typeDocum_peop.setVisible(true);
+        cmb_acess_empl.setVisible(true);
         txt_phone_peop.setVisible(true);
         txt_cod_cli.setVisible(true);
         txt_email_peop.setVisible(true);
+        
+        txt_salary_empl.setVisible(true);
+        txt_password_empl.setVisible(true);
+        txt_login_empl.setVisible(true);
+        cmb_state_empl.setVisible(true);
+        cmb_acess_empl.setVisible(true);
         
         btn_novo.setEnabled(true);
         btn_salvar.setEnabled(true);
@@ -87,13 +102,17 @@ public class frm_clients extends javax.swing.JFrame {
         txt_phone_peop.setText("");
         txt_cod_cli.setText("");
         txt_email_peop.setText("");
+        
+        txt_salary_empl.setText("");
+        txt_password_empl.setText("");
+        txt_login_empl.setText("");
     }  
       
       void showSearch(String searching){
           
           try {
               DefaultTableModel model;
-              ConnectClient func=new ConnectClient();
+              ConnectEmployee func=new ConnectEmployee();
               model = func.showSearch(searching);
               TB_Lista.setModel(model);
               
@@ -115,6 +134,10 @@ public class frm_clients extends javax.swing.JFrame {
         txt_phone_peop.setText("");
         txt_cod_cli.setText("");
         txt_email_peop.setText("");
+        
+        txt_salary_empl.setText("");
+        txt_password_empl.setText("");
+        txt_login_empl.setText("");
     }         
     
     /**
@@ -133,7 +156,7 @@ public class frm_clients extends javax.swing.JFrame {
         lbl_docum = new javax.swing.JLabel();
         txt_docum_peop = new javax.swing.JTextField();
         lbl_tipoDoc = new javax.swing.JLabel();
-        cmb_typeDocum_peop = new javax.swing.JComboBox<>();
+        cmb_acess_empl = new javax.swing.JComboBox<>();
         btn_novo = new javax.swing.JButton();
         btn_cancelar = new javax.swing.JButton();
         btn_salvar = new javax.swing.JButton();
@@ -151,6 +174,16 @@ public class frm_clients extends javax.swing.JFrame {
         txt_cod_cli = new javax.swing.JTextField();
         jsc_adress_peop = new javax.swing.JScrollPane();
         txt_adress_peop = new javax.swing.JTextArea();
+        lbl_salary = new javax.swing.JLabel();
+        txt_salary_empl = new javax.swing.JTextField();
+        lbl_acesso = new javax.swing.JLabel();
+        cmb_typeDocum_peop = new javax.swing.JComboBox<>();
+        lbl_login = new javax.swing.JLabel();
+        txt_login_empl = new javax.swing.JTextField();
+        lbl_estado = new javax.swing.JLabel();
+        cmb_state_empl = new javax.swing.JComboBox<>();
+        lbl_senha = new javax.swing.JLabel();
+        txt_password_empl = new javax.swing.JTextField();
         jpa_listaQuartos = new javax.swing.JPanel();
         lbl_cadQuarto1 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -163,12 +196,12 @@ public class frm_clients extends javax.swing.JFrame {
         lbl_registros = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Cadastro de Clientes");
+        setTitle("Cadastro de Funcionários");
 
         jpa_cadQuartos.setForeground(new java.awt.Color(204, 204, 204));
 
         lbl_cadQuarto.setFont(new java.awt.Font("Times New Roman", 1, 11)); // NOI18N
-        lbl_cadQuarto.setText("Cadastro de Clientes");
+        lbl_cadQuarto.setText("Cadastro de Funcionários");
 
         lbl_name.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
         lbl_name.setText("Nome");
@@ -192,10 +225,10 @@ public class frm_clients extends javax.swing.JFrame {
         lbl_tipoDoc.setText("Tipo Doc");
         lbl_tipoDoc.setPreferredSize(new java.awt.Dimension(28, 13));
 
-        cmb_typeDocum_peop.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "RG", "CPF", "CNH", "MILITAR", "MEDICA", "AOB", " " }));
-        cmb_typeDocum_peop.addActionListener(new java.awt.event.ActionListener() {
+        cmb_acess_empl.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADMINISTRADOR", "PADRÃO" }));
+        cmb_acess_empl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmb_typeDocum_peopActionPerformed(evt);
+                cmb_acess_emplActionPerformed(evt);
             }
         });
 
@@ -278,63 +311,137 @@ public class frm_clients extends javax.swing.JFrame {
         txt_adress_peop.setRows(5);
         jsc_adress_peop.setViewportView(txt_adress_peop);
 
+        lbl_salary.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
+        lbl_salary.setText("Salário");
+
+        txt_salary_empl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_salary_emplActionPerformed(evt);
+            }
+        });
+
+        lbl_acesso.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
+        lbl_acesso.setText("Acesso");
+
+        cmb_typeDocum_peop.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "RG", "CPF", "CNH", "MILITAR", "MEDICA", "AOB", " " }));
+        cmb_typeDocum_peop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_typeDocum_peopActionPerformed(evt);
+            }
+        });
+
+        lbl_login.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
+        lbl_login.setText("Login");
+
+        txt_login_empl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_login_emplActionPerformed(evt);
+            }
+        });
+
+        lbl_estado.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
+        lbl_estado.setText("Estado");
+
+        cmb_state_empl.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "D" }));
+        cmb_state_empl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_state_emplActionPerformed(evt);
+            }
+        });
+
+        lbl_senha.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
+        lbl_senha.setText("Senha");
+
+        txt_password_empl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_password_emplActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jpa_cadQuartosLayout = new javax.swing.GroupLayout(jpa_cadQuartos);
         jpa_cadQuartos.setLayout(jpa_cadQuartosLayout);
         jpa_cadQuartosLayout.setHorizontalGroup(
             jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
-                        .addComponent(lbl_phone)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_phone_peop, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lbl_email)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txt_email_peop))
-                    .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
-                        .addComponent(lbl_cadQuarto)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txt_id_peop, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
-                        .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_adress)
-                            .addComponent(lbl_father)
-                            .addComponent(lbl_name))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
-                                .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txt_father_peop, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_name_peop, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cmb_typeDocum_peop, javax.swing.GroupLayout.Alignment.LEADING, 0, 150, Short.MAX_VALUE))
+                                .addComponent(lbl_cadQuarto)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txt_id_peop, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
+                                .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbl_adress)
+                                    .addComponent(lbl_father)
+                                    .addComponent(lbl_name))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
-                                        .addComponent(lbl_mother)
+                                        .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(txt_father_peop, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                            .addComponent(txt_name_peop, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(cmb_typeDocum_peop, 0, 150, Short.MAX_VALUE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txt_mother_peop))
+                                        .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
+                                                .addComponent(lbl_mother)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(txt_mother_peop))
+                                            .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
+                                                .addComponent(lbl_name1)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(txt_cod_cli, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(0, 0, Short.MAX_VALUE))
+                                            .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
+                                                .addComponent(lbl_docum)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(txt_docum_peop))))
+                                    .addComponent(jsc_adress_peop)))
+                            .addComponent(lbl_tipoDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
+                                .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lbl_phone)
+                                    .addComponent(lbl_salary))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
-                                        .addComponent(lbl_name1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txt_cod_cli, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
+                                        .addComponent(txt_phone_peop, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(lbl_email)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txt_email_peop, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE))
                                     .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
-                                        .addComponent(lbl_docum)
+                                        .addComponent(txt_salary_empl, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(lbl_acesso)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txt_docum_peop))))
-                            .addComponent(jsc_adress_peop)))
-                    .addComponent(lbl_tipoDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpa_cadQuartosLayout.createSequentialGroup()
-                .addContainerGap(76, Short.MAX_VALUE)
-                .addComponent(btn_novo, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62))
+                                        .addComponent(cmb_acess_empl, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpa_cadQuartosLayout.createSequentialGroup()
+                        .addGap(0, 10, Short.MAX_VALUE)
+                        .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_estado, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbl_login, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
+                                .addComponent(btn_novo, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btn_salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
+                                .addGap(44, 44, 44)
+                                .addComponent(cmb_state_empl, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
+                                .addComponent(txt_login_empl, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(24, 24, 24)
+                                .addComponent(lbl_senha)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txt_password_empl, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(23, 23, 23))))
         );
         jpa_cadQuartosLayout.setVerticalGroup(
             jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -356,22 +463,41 @@ public class frm_clients extends javax.swing.JFrame {
                     .addComponent(txt_mother_peop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(13, 13, 13)
                 .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmb_typeDocum_peop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_tipoDoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_docum)
-                    .addComponent(txt_docum_peop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_docum_peop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmb_typeDocum_peop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_adress)
                     .addComponent(jsc_adress_peop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_phone)
-                    .addComponent(txt_phone_peop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lbl_email)
-                        .addComponent(txt_email_peop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(47, 47, 47)
+                        .addComponent(txt_email_peop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbl_phone)
+                        .addComponent(txt_phone_peop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_acesso)
+                    .addComponent(txt_salary_empl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmb_acess_empl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_salary))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbl_senha)
+                        .addComponent(txt_password_empl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbl_login)
+                        .addComponent(txt_login_empl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_estado)
+                    .addComponent(cmb_state_empl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_novo)
                     .addComponent(btn_cancelar)
@@ -382,7 +508,7 @@ public class frm_clients extends javax.swing.JFrame {
         jpa_listaQuartos.setForeground(new java.awt.Color(204, 204, 204));
 
         lbl_cadQuarto1.setFont(new java.awt.Font("Times New Roman", 1, 11)); // NOI18N
-        lbl_cadQuarto1.setText("Lista de Clientes");
+        lbl_cadQuarto1.setText("Lista de Funcionários");
 
         TB_Lista.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -444,7 +570,7 @@ public class frm_clients extends javax.swing.JFrame {
             .addGroup(jpa_listaQuartosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jpa_listaQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 648, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 964, Short.MAX_VALUE)
                     .addGroup(jpa_listaQuartosLayout.createSequentialGroup()
                         .addGroup(jpa_listaQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbl_cadQuarto1)
@@ -476,9 +602,9 @@ public class frm_clients extends javax.swing.JFrame {
                     .addComponent(btn_sair)
                     .addComponent(btn_apagar)
                     .addComponent(lbl_pesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_registros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(15, 15, 15))
         );
@@ -498,104 +624,15 @@ public class frm_clients extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jpa_listaQuartos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jpa_cadQuartos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jpa_cadQuartos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jpa_listaQuartos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txt_name_peopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_name_peopActionPerformed
-        JOptionPane.showMessageDialog(rootPane, "Insira o nome do cliente");
-        txt_name_peop.transferFocus();
-    }//GEN-LAST:event_txt_name_peopActionPerformed
  
-    private void txt_docum_peopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_docum_peopActionPerformed
-        JOptionPane.showMessageDialog(rootPane, "Insira o número do documento");
-        txt_docum_peop.transferFocus();
-    }//GEN-LAST:event_txt_docum_peopActionPerformed
-
-    private void cmb_typeDocum_peopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_typeDocum_peopActionPerformed
-        cmb_typeDocum_peop.transferFocus();
-    }//GEN-LAST:event_cmb_typeDocum_peopActionPerformed
-
-    private void btn_novoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_novoActionPerformed
-        componentEnable();
-        btn_salvar.setText("Salvar");
-        action="save";
-    }//GEN-LAST:event_btn_novoActionPerformed
-
-    private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
-        cleanField();
-    }//GEN-LAST:event_btn_cancelarActionPerformed
-
-    private void btn_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvarActionPerformed
-        if (txt_name_peop.getText().length() == 0){
-            JOptionPane.showMessageDialog(rootPane, "Insira o nome do cliente");
-            txt_name_peop.requestFocus();
-        }
-
-        if (txt_docum_peop.getText().length() == 0){
-            JOptionPane.showMessageDialog(rootPane, "Insira o número do documento");
-            txt_docum_peop.requestFocus();
-        }
-
-        if (txt_adress_peop.getText().length() == 0){
-            JOptionPane.showMessageDialog(rootPane, "Insira o endereço");
-            txt_adress_peop.requestFocus();
-        }
-
-        if (txt_cod_cli.getText().length() == 0){
-            JOptionPane.showMessageDialog(rootPane, "Insira o código do cliente");
-            txt_cod_cli.requestFocus();
-        }
-
-        
-        if (txt_phone_peop.getText().length() == 0){
-            JOptionPane.showMessageDialog(rootPane, "Insira número do telefône");
-            txt_phone_peop.requestFocus();
-        }        
-
-        if (txt_email_peop.getText().length() == 0){
-            JOptionPane.showMessageDialog(rootPane, "Insira o email do cliente");
-            txt_email_peop.requestFocus();
-        }        
-        
-        Vclients dts = new  Vclients();
-        ConnectClient func = new ConnectClient();
-
-        dts.setName(txt_name_peop.getText());
-        dts.setFather(txt_father_peop.getText());
-        dts.setMother(txt_mother_peop.getText());
-        dts.setAdress(txt_adress_peop.getText());
-        dts.setCodClient(txt_cod_cli.getText());
-        dts.setDocument(txt_docum_peop.getText());
-        dts.setPhone(txt_phone_peop.getText());
-        dts.setEmail(txt_email_peop.getText());
-
-        int selectedItem = cmb_typeDocum_peop.getSelectedIndex();
-        dts.setTypeDocum((String) cmb_typeDocum_peop.getItemAt(selectedItem));
-
-        if (action.equals("save")){
-            if (func.insert(dts)){
-                JOptionPane.showMessageDialog(rootPane, "O Cliente foi registrado com sucesso!");
-                showSearch("");
-                componentDisable();
-            }
-        }
-        else if(action.equals("edit")){
-            dts.setIdpeop(Integer.parseInt(txt_id_peop.getText()));
-
-            if (func.edit(dts)){
-                JOptionPane.showMessageDialog(rootPane, "O Cliente foi editado com sucesso!");
-                showSearch("");
-                componentDisable();
-            }
-        }
-    }//GEN-LAST:event_btn_salvarActionPerformed
-
     private void TB_ListaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TB_ListaMouseClicked
         btn_salvar.setText("Editar");
         componentEnable();
@@ -612,7 +649,11 @@ public class frm_clients extends javax.swing.JFrame {
         txt_adress_peop.setText(TB_Lista.getValueAt(rowActive, 6).toString());
         txt_phone_peop.setText(TB_Lista.getValueAt(rowActive, 7).toString());
         txt_email_peop.setText(TB_Lista.getValueAt(rowActive, 8).toString());
-        txt_cod_cli.setText(TB_Lista.getValueAt(rowActive, 9).toString());
+        txt_salary_empl.setText(TB_Lista.getValueAt(rowActive, 9).toString());
+        cmb_acess_empl.setSelectedItem(TB_Lista.getValueAt(rowActive, 10).toString());
+        txt_login_empl.setText(TB_Lista.getValueAt(rowActive, 11).toString());
+        txt_password_empl.setText(TB_Lista.getValueAt(rowActive, 12).toString());
+        cmb_state_empl.setSelectedItem(TB_Lista.getValueAt(rowActive, 13).toString());
     }//GEN-LAST:event_TB_ListaMouseClicked
 
     private void btn_sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sairActionPerformed
@@ -627,8 +668,8 @@ public class frm_clients extends javax.swing.JFrame {
         if(!txt_id_peop.getText().equals("")){
             int confirmation = JOptionPane.showConfirmDialog(rootPane, "Deseja realmente excluir esse registro?", "Excluir", 2);
             if (confirmation == 0){
-                ConnectClient func = new ConnectClient();
-                Vclients dts = new Vclients();
+                ConnectEmployee func = new ConnectEmployee();
+                Vemployee dts = new Vemployee();
                 dts.setIdpeop(Integer.parseInt(txt_id_peop.getText()));
                 func.delete(dts);
                 showSearch("");
@@ -636,22 +677,144 @@ public class frm_clients extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btn_apagarActionPerformed
-    
-    private void txt_father_peopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_father_peopActionPerformed
-    }//GEN-LAST:event_txt_father_peopActionPerformed
 
-    private void txt_mother_peopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_mother_peopActionPerformed
-    }//GEN-LAST:event_txt_mother_peopActionPerformed
+    private void cmb_state_emplActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_state_emplActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmb_state_emplActionPerformed
 
-    private void txt_email_peopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_email_peopActionPerformed
-    }//GEN-LAST:event_txt_email_peopActionPerformed
+    private void txt_login_emplActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_login_emplActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_login_emplActionPerformed
 
-    private void txt_phone_peopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_phone_peopActionPerformed
-    }//GEN-LAST:event_txt_phone_peopActionPerformed
+    private void cmb_typeDocum_peopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_typeDocum_peopActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmb_typeDocum_peopActionPerformed
+
+    private void txt_salary_emplActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_salary_emplActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_salary_emplActionPerformed
 
     private void txt_cod_cliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cod_cliActionPerformed
+
     }//GEN-LAST:event_txt_cod_cliActionPerformed
 
+    private void txt_phone_peopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_phone_peopActionPerformed
+
+    }//GEN-LAST:event_txt_phone_peopActionPerformed
+
+    private void txt_email_peopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_email_peopActionPerformed
+
+    }//GEN-LAST:event_txt_email_peopActionPerformed
+
+    private void txt_mother_peopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_mother_peopActionPerformed
+
+    }//GEN-LAST:event_txt_mother_peopActionPerformed
+
+    private void txt_father_peopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_father_peopActionPerformed
+
+    }//GEN-LAST:event_txt_father_peopActionPerformed
+
+    private void btn_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvarActionPerformed
+        if (txt_name_peop.getText().length() == 0){
+            JOptionPane.showMessageDialog(rootPane, "Insira o nome do funcioário");
+            txt_name_peop.requestFocus();
+        }
+
+        if (txt_docum_peop.getText().length() == 0){
+            JOptionPane.showMessageDialog(rootPane, "Insira o número do documento");
+            txt_docum_peop.requestFocus();
+        }
+
+        if (txt_adress_peop.getText().length() == 0){
+            JOptionPane.showMessageDialog(rootPane, "Insira o endereço");
+            txt_adress_peop.requestFocus();
+        }
+
+        if (txt_cod_cli.getText().length() == 0){
+            JOptionPane.showMessageDialog(rootPane, "Insira o código do funcioário");
+            txt_cod_cli.requestFocus();
+        }
+
+        if (txt_phone_peop.getText().length() == 0){
+            JOptionPane.showMessageDialog(rootPane, "Insira número do telefône");
+            txt_phone_peop.requestFocus();
+        }
+
+        if (txt_email_peop.getText().length() == 0){
+            JOptionPane.showMessageDialog(rootPane, "Insira o email do cliente");
+            txt_email_peop.requestFocus();
+        }
+
+        Vemployee dts = new  Vemployee();
+        ConnectEmployee func = new ConnectEmployee();
+
+        dts.setName(txt_name_peop.getText());
+        dts.setFather(txt_father_peop.getText());
+        dts.setMother(txt_mother_peop.getText());
+        dts.setAdress(txt_adress_peop.getText());
+        dts.setDocument(txt_docum_peop.getText());
+        dts.setPhone(txt_phone_peop.getText());
+        dts.setEmail(txt_email_peop.getText());
+
+        dts.setSalary(Double.parseDouble(txt_salary_empl.getText()));
+        dts.setPassword(txt_password_empl.getText());
+        dts.setLogin(txt_login_empl.getText());
+
+        int selectedItem = cmb_typeDocum_peop.getSelectedIndex();
+        dts.setTypeDocum((String) cmb_typeDocum_peop.getItemAt(selectedItem));
+
+        selectedItem = cmb_acess_empl.getSelectedIndex();
+        dts.setAcess((String) cmb_acess_empl.getItemAt(selectedItem));
+
+        selectedItem = cmb_state_empl.getSelectedIndex();
+        dts.setState((String) cmb_state_empl.getItemAt(selectedItem));
+
+        if (action.equals("save")){
+            if (func.insert(dts)){
+                JOptionPane.showMessageDialog(rootPane, "O Funcionário foi registrado com sucesso!");
+                showSearch("");
+                componentDisable();
+            }
+        }
+        else if(action.equals("edit")){
+            dts.setIdpeop(Integer.parseInt(txt_id_peop.getText()));
+
+            if (func.edit(dts)){
+                JOptionPane.showMessageDialog(rootPane, "O Funcionário foi editado com sucesso!");
+                showSearch("");
+                componentDisable();
+            }
+        }
+    }//GEN-LAST:event_btn_salvarActionPerformed
+
+    private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
+        cleanField();
+    }//GEN-LAST:event_btn_cancelarActionPerformed
+
+    private void btn_novoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_novoActionPerformed
+        componentEnable();
+        btn_salvar.setText("Salvar");
+        action="save";
+    }//GEN-LAST:event_btn_novoActionPerformed
+
+    private void cmb_acess_emplActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_acess_emplActionPerformed
+        cmb_acess_empl.transferFocus();
+    }//GEN-LAST:event_cmb_acess_emplActionPerformed
+
+    private void txt_docum_peopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_docum_peopActionPerformed
+        JOptionPane.showMessageDialog(rootPane, "Insira o número do documento");
+        txt_docum_peop.transferFocus();
+    }//GEN-LAST:event_txt_docum_peopActionPerformed
+
+    private void txt_name_peopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_name_peopActionPerformed
+        JOptionPane.showMessageDialog(rootPane, "Insira o nome do funcionário");
+        txt_name_peop.transferFocus();
+    }//GEN-LAST:event_txt_name_peopActionPerformed
+
+    private void txt_password_emplActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_password_emplActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_password_emplActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -669,20 +832,21 @@ public class frm_clients extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frm_clients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frm_employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frm_clients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frm_employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frm_clients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frm_employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frm_clients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frm_employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frm_clients().setVisible(true);
+                new frm_employee().setVisible(true);
             }
         });
     }
@@ -695,23 +859,30 @@ public class frm_clients extends javax.swing.JFrame {
     private javax.swing.JButton btn_novo;
     private javax.swing.JButton btn_sair;
     private javax.swing.JButton btn_salvar;
+    private javax.swing.JComboBox<String> cmb_acess_empl;
+    private javax.swing.JComboBox<String> cmb_state_empl;
     private javax.swing.JComboBox<String> cmb_typeDocum_peop;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPanel jpa_cadQuartos;
     private javax.swing.JPanel jpa_listaQuartos;
     private javax.swing.JScrollPane jsc_adress_peop;
+    private javax.swing.JLabel lbl_acesso;
     private javax.swing.JLabel lbl_adress;
     private javax.swing.JLabel lbl_cadQuarto;
     private javax.swing.JLabel lbl_cadQuarto1;
     private javax.swing.JLabel lbl_docum;
     private javax.swing.JLabel lbl_email;
+    private javax.swing.JLabel lbl_estado;
     private javax.swing.JLabel lbl_father;
+    private javax.swing.JLabel lbl_login;
     private javax.swing.JLabel lbl_mother;
     private javax.swing.JLabel lbl_name;
     private javax.swing.JLabel lbl_name1;
     private javax.swing.JLabel lbl_pesquisar;
     private javax.swing.JLabel lbl_phone;
     private javax.swing.JLabel lbl_registros;
+    private javax.swing.JLabel lbl_salary;
+    private javax.swing.JLabel lbl_senha;
     private javax.swing.JLabel lbl_tipoDoc;
     private javax.swing.JTextArea txt_adress_peop;
     private javax.swing.JTextField txt_cod_cli;
@@ -719,9 +890,12 @@ public class frm_clients extends javax.swing.JFrame {
     private javax.swing.JTextField txt_email_peop;
     private javax.swing.JTextField txt_father_peop;
     private javax.swing.JTextField txt_id_peop;
+    private javax.swing.JTextField txt_login_empl;
     private javax.swing.JTextField txt_mother_peop;
     private javax.swing.JTextField txt_name_peop;
+    private javax.swing.JTextField txt_password_empl;
     private javax.swing.JTextField txt_pesquisar;
     private javax.swing.JTextField txt_phone_peop;
+    private javax.swing.JTextField txt_salary_empl;
     // End of variables declaration//GEN-END:variables
 }
