@@ -185,6 +185,44 @@ public class ConnectEmployee {
             JOptionPane.showConfirmDialog(null, e);
             return false;
         }        
-    }    
+    }   
+    
+    
+    public DefaultTableModel login(String login, String password){
+        
+        DefaultTableModel model;
+        String [ ] titles = {"ID", "Nome", "Pai", "Mãe", "Tipo Doc", "Acesso", "Login", "Senha", "Estado"};
+        String [ ] records = new String[8];
+        recordTotal = 0;
+        
+        model = new DefaultTableModel(null, titles);
+        
+        sSql = "select p.id_peop,p.name_peop,p.father_peop,p.mother_peop,e.acess_empl,"
+                + "e.login_empl,e.password_empl,e.state_empl from tb_people p  inner join tb_employee e on "
+                + "p.id_peop=e.id_peop  where e.login_empl='"+login+"' and e.password_empl='"+password+"'"
+                + " and e.state_empl='A'";
+        
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs=st.executeQuery(sSql);
+            while(rs.next()){
+                records [0]=rs.getString("id_peop");
+                records [1]=rs.getString("name_peop");
+                records [2]=rs.getString("father_peop");
+                records [3]=rs.getString("mother_peop");
+                records [4]=rs.getString("acess_empl");
+                records [5]=rs.getString("login_empl");
+                records [6]=rs.getString("password_empl");
+                records [7]=rs.getString("state_empl");
+                
+                recordTotal = recordTotal + 1;
+                model.addRow(records);
+            }       
+            return model;
+        } catch (SQLException e) {
+            JOptionPane.showConfirmDialog(null, e);
+            return null;
+        }
+    }
     
 }

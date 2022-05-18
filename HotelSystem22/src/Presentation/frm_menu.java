@@ -148,6 +148,11 @@ public class frm_menu extends javax.swing.JFrame {
         menuExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/sair.png"))); // NOI18N
         menuExit.setText("Sair");
         menuExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuExit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuExitMouseClicked(evt);
+            }
+        });
         menuBar.add(menuExit);
 
         setJMenuBar(menuBar);
@@ -193,6 +198,10 @@ public class frm_menu extends javax.swing.JFrame {
         form.toFront();
         form.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void menuExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuExitMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_menuExitMouseClicked
 
     /**
      * @param args the command line arguments
