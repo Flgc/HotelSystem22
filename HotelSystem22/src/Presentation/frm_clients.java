@@ -5,7 +5,6 @@
  */
 package Presentation;
 
-import Data.Vbedrooms;
 import Data.Vclients;
 import Logic.ConnectClient;
 import javax.swing.JOptionPane;
@@ -15,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author fabio
  */
-public class frm_clients extends javax.swing.JFrame {
+public class frm_clients extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form frm_clients
@@ -23,8 +22,7 @@ public class frm_clients extends javax.swing.JFrame {
     public frm_clients() {
         initComponents();
         componentDisable();
-        showSearch("null");        
-        this.setLocationRelativeTo(null);            
+        showSearch("null");     
     }
 
    private String action="save";
@@ -162,7 +160,10 @@ public class frm_clients extends javax.swing.JFrame {
         btn_apagar = new javax.swing.JButton();
         lbl_registros = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconifiable(true);
+        setMaximizable(true);
         setTitle("Cadastro de Clientes");
 
         jpa_cadQuartos.setForeground(new java.awt.Color(204, 204, 204));
@@ -365,12 +366,13 @@ public class frm_clients extends javax.swing.JFrame {
                     .addComponent(lbl_adress)
                     .addComponent(jsc_adress_peop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_phone)
-                    .addComponent(txt_phone_peop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lbl_email)
-                        .addComponent(txt_email_peop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txt_email_peop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbl_phone)
+                        .addComponent(txt_phone_peop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(47, 47, 47)
                 .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_novo)

@@ -126,6 +126,11 @@ public class frm_menu extends javax.swing.JFrame {
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/restringir usuario 32x32.png"))); // NOI18N
         jMenuItem1.setText("Usuários e Acessos");
         jMenuItem1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         subMenuUserAndAcecessory.add(jMenuItem1);
 
         menuBar.add(subMenuUserAndAcecessory);
@@ -162,7 +167,10 @@ public class frm_menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void subMenuClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subMenuClientActionPerformed
-        // TODO add your handling code here:
+        frm_clients form = new frm_clients();
+        desktopPaneMenu.add(form);
+        form.toFront();
+        form.setVisible(true);
     }//GEN-LAST:event_subMenuClientActionPerformed
 
     private void subMenuBedroomsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subMenuBedroomsActionPerformed
@@ -178,6 +186,13 @@ public class frm_menu extends javax.swing.JFrame {
         form.toFront();
         form.setVisible(true);
     }//GEN-LAST:event_subMenuProductsActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        frm_employee form = new frm_employee();
+        desktopPaneMenu.add(form);
+        form.toFront();
+        form.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
