@@ -30,6 +30,9 @@ public class frm_menu extends javax.swing.JFrame {
     private void initComponents() {
 
         desktopPaneMenu = new javax.swing.JDesktopPane();
+        lbl_Acess = new javax.swing.JLabel();
+        lbl_ID = new javax.swing.JLabel();
+        lbl_Name = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         menuSystem = new javax.swing.JMenu();
         menuFile = new javax.swing.JMenu();
@@ -49,6 +52,24 @@ public class frm_menu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         desktopPaneMenu.setBackground(new java.awt.Color(255, 255, 255));
+
+        lbl_Acess.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
+        lbl_Acess.setForeground(new java.awt.Color(255, 0, 51));
+        lbl_Acess.setText("LB_Acess");
+        desktopPaneMenu.add(lbl_Acess);
+        lbl_Acess.setBounds(980, 10, 70, 20);
+
+        lbl_ID.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
+        lbl_ID.setForeground(new java.awt.Color(255, 0, 51));
+        lbl_ID.setText("LB_ID");
+        desktopPaneMenu.add(lbl_ID);
+        lbl_ID.setBounds(800, 10, 50, 20);
+
+        lbl_Name.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
+        lbl_Name.setForeground(new java.awt.Color(255, 0, 51));
+        lbl_Name.setText("LB_Name");
+        desktopPaneMenu.add(lbl_Name);
+        lbl_Name.setBounds(860, 10, 110, 20);
 
         menuSystem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/Inicio.png"))); // NOI18N
         menuSystem.setMnemonic('f');
@@ -241,6 +262,9 @@ public class frm_menu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPaneMenu;
     private javax.swing.JMenuItem jMenuItem1;
+    public static javax.swing.JLabel lbl_Acess;
+    public static javax.swing.JLabel lbl_ID;
+    public static javax.swing.JLabel lbl_Name;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu menuExit;
     private javax.swing.JMenu menuFile;
