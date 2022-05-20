@@ -27,6 +27,9 @@
               <Color id="Hand Cursor"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+          </AuxValues>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="subMenuBedrooms">
               <Properties>
@@ -133,6 +136,9 @@
               <Color id="Hand Cursor"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+          </AuxValues>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
               <Properties>
@@ -248,7 +254,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="980" y="10" width="70" height="20"/>
+              <AbsoluteConstraints x="190" y="0" width="70" height="20"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -267,7 +273,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="800" y="10" width="50" height="20"/>
+              <AbsoluteConstraints x="10" y="0" width="50" height="20"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -286,7 +292,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="860" y="10" width="110" height="20"/>
+              <AbsoluteConstraints x="70" y="0" width="110" height="20"/>
             </Constraint>
           </Constraints>
         </Component>

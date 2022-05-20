@@ -7,6 +7,7 @@ package Presentation;
 
 import Data.Vemployee;
 import Logic.ConnectEmployee;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -21,6 +22,7 @@ public class frm_login extends javax.swing.JFrame {
     public frm_login() {
         initComponents();
         this.setLocationRelativeTo(null); 
+        TB_Lista.setVisible(false);         
     }
 
     /**
@@ -173,11 +175,19 @@ public class frm_login extends javax.swing.JFrame {
                 this.dispose();
                 frm_menu form = new frm_menu();
                 form.toFront();
+                form.setVisible(true);
                 
                 frm_menu.lbl_ID.setText(TB_Lista.getValueAt(0, 0).toString());
                 frm_menu.lbl_Name.setText(TB_Lista.getValueAt(0, 1).toString());
                 frm_menu.lbl_Acess.setText(TB_Lista.getValueAt(0, 4).toString());
                 
+                if(!frm_menu.lbl_Acess.getText().equals("Administrador")){
+                    frm_menu.menuFile.setEnabled(false);
+                    frm_menu.subMenuUserAndAcecessory.setEnabled(false);
+                }
+                else{
+                    JOptionPane.showMessageDialog(rootPane, "Sem permissão de Acesso");                    
+                }
             }
             
         } catch (Exception e) {
