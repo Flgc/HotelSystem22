@@ -80,6 +80,8 @@ public class frm_login extends javax.swing.JFrame {
         lbl_img.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/usuario.png"))); // NOI18N
 
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(0, 0));
+
         TB_Lista.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -100,7 +102,7 @@ public class frm_login extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -129,7 +131,7 @@ public class frm_login extends javax.swing.JFrame {
                         .addComponent(lbl_img, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(4, 4, 4)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbl_login, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -181,15 +183,13 @@ public class frm_login extends javax.swing.JFrame {
                 frm_menu.lbl_Name.setText(TB_Lista.getValueAt(0, 1).toString());
                 frm_menu.lbl_Acess.setText(TB_Lista.getValueAt(0, 4).toString());
                 
-                if(!frm_menu.lbl_Acess.getText().equals("Administrador")){
+                if(!frm_menu.lbl_Acess.getText().equals("ADMINISTRADOR")){
                     frm_menu.menuFile.setEnabled(false);
                     frm_menu.subMenuUserAndAcecessory.setEnabled(false);
                 }
-                else{
-                    JOptionPane.showMessageDialog(rootPane, "Sem permissão de Acesso");                    
-                }
-            }
-            
+            } else{
+                JOptionPane.showMessageDialog(rootPane, "Sem permissão de Acesso");                    
+            }          
         } catch (Exception e) {
         }
     }//GEN-LAST:event_btn_loginActionPerformed

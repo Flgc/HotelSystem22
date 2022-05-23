@@ -52,24 +52,25 @@ public class frm_menu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         desktopPaneMenu.setBackground(new java.awt.Color(255, 255, 255));
+        desktopPaneMenu.setAutoscrolls(true);
 
         lbl_Acess.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
         lbl_Acess.setForeground(new java.awt.Color(255, 0, 51));
         lbl_Acess.setText("LB_Acess");
         desktopPaneMenu.add(lbl_Acess);
-        lbl_Acess.setBounds(190, 0, 70, 20);
+        lbl_Acess.setBounds(10, 20, 160, 20);
 
         lbl_ID.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
         lbl_ID.setForeground(new java.awt.Color(255, 0, 51));
         lbl_ID.setText("LB_ID");
         desktopPaneMenu.add(lbl_ID);
-        lbl_ID.setBounds(10, 0, 50, 20);
+        lbl_ID.setBounds(10, 0, 100, 20);
 
         lbl_Name.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
         lbl_Name.setForeground(new java.awt.Color(255, 0, 51));
         lbl_Name.setText("LB_Name");
         desktopPaneMenu.add(lbl_Name);
-        lbl_Name.setBounds(70, 0, 110, 20);
+        lbl_Name.setBounds(10, 10, 170, 20);
 
         menuSystem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/Inicio.png"))); // NOI18N
         menuSystem.setMnemonic('f');
