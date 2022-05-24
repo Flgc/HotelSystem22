@@ -188,7 +188,7 @@ public class frm_login extends javax.swing.JFrame {
                     frm_menu.subMenuUserAndAcecessory.setEnabled(false);
                 }
             } else{
-                JOptionPane.showMessageDialog(rootPane, "Sem permissão de Acesso");                    
+                 JOptionPane.showMessageDialog(rootPane, "Sem permissão de Acesso");                    
             }          
         } catch (Exception e) {
         }
