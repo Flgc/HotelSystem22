@@ -72,11 +72,21 @@ public class ConnectFormReservations {
     }  
     
     public boolean insert(Vreservations dts){
-        sSql = "";
+        sSql = "insert into tb_reservations( id_res, id_bedroom, id_client, id_employee, type_res, date_res,"
+                + " date_checkin_res, date_exit_res, value_bedroom_res, state_res) values (?,?,?,?,?,?,?,?,?,?)";
+
         try {
             PreparedStatement pst=cn.prepareStatement(sSql);
             // Insert record  on fields
-
+            pst.setInt(1, dts.getIdbedroom());
+            pst.setInt(2, dts.getIdclient());
+            pst.setInt(3, dts.getIdemployee());    
+            pst.setString(4, dts.getTyperes());
+            pst.setDate(5, dts.getDateres());
+            pst.setDate(6, dts.getDatecheckinres());
+            pst.setDate(7, dts.getDateexitres());
+            pst.setDouble(8, dts.getValuebedroomres());
+            pst.setString(9, dts.getStateres());
             
             int n=pst.executeUpdate();
             if (n!=0) {
@@ -91,11 +101,23 @@ public class ConnectFormReservations {
     }
 
     public boolean edit(Vreservations dts){
-        sSql = "";
+         sSql = "update tb_reservations set id_bedroom=?, id_client=?, id_employee=?, type_res=?, date_res=?,"
+                + " date_checkin_res=?, date_exit_res=?, value_bedroom_res=?, state_res=? where id_res=?";
+
         try {
             PreparedStatement pst=cn.prepareStatement(sSql);
             // update record  on fields
-           
+            pst.setInt(1, dts.getIdbedroom());
+            pst.setInt(2, dts.getIdclient());
+            pst.setInt(3, dts.getIdemployee());    
+            pst.setString(4, dts.getTyperes());
+            pst.setDate(5, dts.getDateres());
+            pst.setDate(6, dts.getDatecheckinres());
+            pst.setDate(7, dts.getDateexitres());
+            pst.setDouble(8, dts.getValuebedroomres());
+            pst.setString(9, dts.getStateres());
+            
+            pst.setInt(10, dts.getIdres());           
             
             int n=pst.executeUpdate();
             if (n!=0) {
@@ -110,10 +132,10 @@ public class ConnectFormReservations {
     }   
     
         public boolean delete(Vreservations dts){
-        sSql = "delete from tb_product  where id_prod=?";
+        sSql = "delete from tb_reservations  where id_res=?";
         try {
             PreparedStatement pst=cn.prepareStatement(sSql);              
-            pst.setInt(1, dts.getIdbedroom());
+            pst.setInt(1, dts.getIdres());
             int n=pst.executeUpdate();
             if (n!=0) {
                 return true;

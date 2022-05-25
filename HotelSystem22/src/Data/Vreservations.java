@@ -5,7 +5,7 @@
  */
 package Data;
 
-import java.util.Date;
+import java.sql.Date;
 
 /**
  *
@@ -19,7 +19,7 @@ public class Vreservations {
     private String typeres;
     private Date dateres;
     private Date datecheckinres;
-    private Date dateexires;
+    private Date dateexitres;
     private Double valuebedroomres;
     private String stateres;
 
@@ -34,7 +34,7 @@ public class Vreservations {
         this.typeres = typeres;
         this.dateres = dateres;
         this.datecheckinres = datecheckinres;
-        this.dateexires = dateexires;
+        this.dateexitres = dateexires;
         this.valuebedroomres = valuebedroomres;
         this.stateres = stateres;
     }
@@ -95,12 +95,12 @@ public class Vreservations {
         this.datecheckinres = datecheckinres;
     }
 
-    public Date getDateexires() {
-        return dateexires;
+    public Date getDateexitres() {
+        return dateexitres;
     }
 
     public void setDateexires(Date dateexires) {
-        this.dateexires = dateexires;
+        this.dateexitres = dateexires;
     }
 
     public Double getValuebedroomres() {
