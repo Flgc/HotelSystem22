@@ -7,6 +7,8 @@ package Presentation;
 
 import Data.Vreservations;
 import Logic.ConnectFormReservations;
+import java.util.Calendar;
+import java.sql.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -15,6 +17,8 @@ import javax.swing.table.DefaultTableModel;
  * @author fabio
  */
 public class frm_reservations extends javax.swing.JInternalFrame {
+    
+    public static int idemployee;
 
     /**
      * Creates new form frm_products
@@ -602,7 +606,7 @@ public class frm_reservations extends javax.swing.JInternalFrame {
             if (confirmation == 0){
                 ConnectFormReservations func = new ConnectFormReservations();
                 Vreservations dts = new Vreservations();
-                //dts.setIdproduct(Integer.parseInt(txt_id_res.getText()));
+                dts.setIdres(Integer.parseInt(txt_id_res.getText()));
                 func.delete(dts);
                 showSearch("");
                 componentDisable();
@@ -611,44 +615,62 @@ public class frm_reservations extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btn_apagarActionPerformed
 
     private void btn_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvarActionPerformed
-        if (txt_id_bedroom.getText().length() == 0){
-            JOptionPane.showMessageDialog(rootPane, "Insira o nome do produto");
+        if (txt_number_br.getText().length() == 0){
+            JOptionPane.showMessageDialog(rootPane, "Insira o número do quarto");
             txt_id_bedroom.requestFocus();
-        }
-
-        if (txt_descript_prod.getText().length() == 0){
-            JOptionPane.showMessageDialog(rootPane, "Insira a descrição para o produto");
-            txt_descript_prod.requestFocus();
-        }
-
-        if (txt_value_bedroom_res.getText().length() == 0){
-            JOptionPane.showMessageDialog(rootPane, "Insira o valor do produto");
-            txt_value_bedroom_res.requestFocus();
         }
 
         Vreservations dts = new  Vreservations();
         ConnectFormReservations func = new ConnectFormReservations();
 
-        dts.setName(txt_id_bedroom.getText());
-        dts.setPriceProduct(Double.parseDouble(txt_value_bedroom_res.getText()));
-        dts.setDescription(txt_descript_prod.getText());
+        dts.setIdbedroom(Integer.parseInt(txt_id_bedroom.getText()));
+        dts.setIdclient(Integer.parseInt(txt_id_client.getText()));
+        dts.setIdemployee(idemployee);
 
         int selectedItem = cmb_type_res.getSelectedIndex();
-        selectedItem = cmb_type_res.getSelectedIndex();
-        dts.setUnd((String) cmb_type_res.getItemAt(selectedItem));
+        dts.setTyperes((String) cmb_type_res.getItemAt(selectedItem));
+        
+        Calendar cal ;
+        int d,m,y;
+        cal=jdc_date_res.getCalendar();
+        d=cal.get(Calendar.DAY_OF_MONTH);
+        m=cal.get(Calendar.MONTH);
+        y=cal.get(Calendar.YEAR) - 1900;
+        
+        dts.setDateres(new Date(y,m,d));
+        
+        cal=jdc_date_checkin_res.getCalendar();
+        d=cal.get(Calendar.DAY_OF_MONTH);
+        m=cal.get(Calendar.MONTH);
+        y=cal.get(Calendar.YEAR) - 1900;
+        
+        dts.setDatecheckinres(new Date(y,m,d));
+        
+        cal=jdc_date_exit_res.getCalendar();
+        d=cal.get(Calendar.DAY_OF_MONTH);
+        m=cal.get(Calendar.MONTH);
+        y=cal.get(Calendar.YEAR) - 1900;
+        
+        dts.setDateexitres(new Date(y,m,d));  
+        
+        dts.setValuebedroomres(Double.parseDouble(txt_value_bedroom_res.getText()));
+        
+        selectedItem = cmb_state_res.getSelectedIndex();
+        dts.setStateres((String) cmb_type_res.getItemAt(selectedItem));
 
         if (action.equals("save")){
             if (func.insert(dts)){
-                JOptionPane.showMessageDialog(rootPane, "O Produto foi registrado com sucesso!");
+                JOptionPane.showMessageDialog(rootPane, "A Reserva foi registrada com sucesso!");
                 showSearch("");
                 componentDisable();
             }
         }
         else if(action.equals("edit")){
-            dts.setIdproduct(Integer.parseInt(txt_id_res.getText()));
+            dts.setIdres(Integer.parseInt(txt_id_res.getText()));
+            dts.setIdemployee(Integer.parseInt(txt_id_employee.getText()));
 
             if (func.edit(dts)){
-                JOptionPane.showMessageDialog(rootPane, "O Produto foi editado com sucesso!");
+                JOptionPane.showMessageDialog(rootPane, "A Reserva foi editada com sucesso!");
                 showSearch("");
                 componentDisable();
             }

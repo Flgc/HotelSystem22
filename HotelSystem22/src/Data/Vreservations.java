@@ -99,7 +99,7 @@ public class Vreservations {
         return dateexitres;
     }
 
-    public void setDateexires(Date dateexires) {
+    public void setDateexitres(Date dateexires) {
         this.dateexitres = dateexires;
     }
 
