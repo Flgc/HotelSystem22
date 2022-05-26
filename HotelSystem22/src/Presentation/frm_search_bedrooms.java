@@ -86,6 +86,9 @@ public class frm_search_bedrooms extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 TB_ListaMouseClicked(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                TB_ListaMousePressed(evt);
+            }
         });
         jScrollPane3.setViewportView(TB_Lista);
 
@@ -176,8 +179,23 @@ public class frm_search_bedrooms extends javax.swing.JFrame {
         showSearch(txt_pesquisar.getText());
     }//GEN-LAST:event_btn_buscarActionPerformed
 
-    private void TB_ListaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TB_ListaMouseClicked
-    }//GEN-LAST:event_TB_ListaMouseClicked
+    private void TB_ListaMouseClicked(java.awt.event.MouseEvent evt) {
+    }       
+    
+    private void TB_ListaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TB_ListaMousePressed
+        if (evt.getClickCount()==2) {
+            int line = TB_Lista.getSelectedRow();
+            String cod;
+            String value;
+            
+            cod = TB_Lista.getValueAt(line, 0).toString();
+            value = TB_Lista.getValueAt(line, 1).toString();
+            
+            frm_reservations.txt_id_bedroom.setText(cod);
+            frm_reservations.txt_number_br.setText(value);
+            this.dispose();
+        }
+    }//GEN-LAST:event_TB_ListaMousePressed
 
     /**
      * @param args the command line arguments

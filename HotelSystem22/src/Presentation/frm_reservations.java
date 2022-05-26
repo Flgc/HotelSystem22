@@ -52,11 +52,11 @@ public class frm_reservations extends javax.swing.JInternalFrame {
     
     void componentDisable(){
         txt_id_res.setVisible(false);
-        txt_id_bedroom.setEnabled(false);
+        txt_id_bedroom.setVisible(false);
         txt_number_br.setEnabled(false);
-        txt_id_client.setEnabled(false);
+        txt_id_client.setVisible(false);
         txt_nom_client.setEnabled(false);
-        txt_id_employee.setEnabled(false);
+        txt_id_employee.setVisible(false);
         txt_nom_employee.setEnabled(false);
         cmb_type_res.setEnabled(false);
         jdc_date_res.setEnabled(false);
@@ -160,15 +160,12 @@ public class frm_reservations extends javax.swing.JInternalFrame {
         lbl_cadProd = new javax.swing.JLabel();
         lbl_bedroom = new javax.swing.JLabel();
         lbl_type = new javax.swing.JLabel();
-        txt_id_bedroom = new javax.swing.JTextField();
         lbl_client = new javax.swing.JLabel();
         cmb_type_res = new javax.swing.JComboBox<>();
         txt_id_res = new javax.swing.JTextField();
         txt_number_br = new javax.swing.JTextField();
-        txt_id_client = new javax.swing.JTextField();
         txt_nom_client = new javax.swing.JTextField();
         lbl_employee = new javax.swing.JLabel();
-        txt_id_employee = new javax.swing.JTextField();
         txt_nom_employee = new javax.swing.JTextField();
         lbl_date_res = new javax.swing.JLabel();
         jdc_date_res = new com.toedter.calendar.JDateChooser();
@@ -195,6 +192,9 @@ public class frm_reservations extends javax.swing.JInternalFrame {
         btn_novo = new javax.swing.JButton();
         btn_salvar = new javax.swing.JButton();
         btn_cancelar = new javax.swing.JButton();
+        txt_id_employee = new javax.swing.JTextField();
+        txt_id_client = new javax.swing.JTextField();
+        txt_id_bedroom = new javax.swing.JTextField();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -213,12 +213,6 @@ public class frm_reservations extends javax.swing.JInternalFrame {
         lbl_type.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
         lbl_type.setText("Tipo Reserva");
 
-        txt_id_bedroom.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_id_bedroomActionPerformed(evt);
-            }
-        });
-
         lbl_client.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
         lbl_client.setText("Cliente");
 
@@ -235,12 +229,6 @@ public class frm_reservations extends javax.swing.JInternalFrame {
             }
         });
 
-        txt_id_client.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_id_clientActionPerformed(evt);
-            }
-        });
-
         txt_nom_client.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_nom_clientActionPerformed(evt);
@@ -249,12 +237,6 @@ public class frm_reservations extends javax.swing.JInternalFrame {
 
         lbl_employee.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
         lbl_employee.setText("Funcionário");
-
-        txt_id_employee.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_id_employeeActionPerformed(evt);
-            }
-        });
 
         txt_nom_employee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -307,42 +289,11 @@ public class frm_reservations extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
-                        .addComponent(lbl_cadProd)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txt_id_res, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
                         .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
-                                .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbl_employee)
-                                    .addComponent(lbl_bedroom)
-                                    .addComponent(lbl_client))
-                                .addGap(19, 19, 19)
-                                .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
-                                        .addComponent(txt_id_employee, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txt_nom_employee, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
-                                        .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(txt_id_bedroom, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txt_id_client, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txt_nom_client, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
-                                            .addComponent(txt_number_br))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btn_bedroom, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btn_client, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
-                                .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbl_type)
-                                    .addComponent(lbl_date_res))
+                                .addComponent(lbl_state_res)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cmb_type_res, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jdc_date_res, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(cmb_state_res, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpa_cadQuartosLayout.createSequentialGroup()
                                     .addComponent(lbl_value_bedroom_res)
@@ -357,11 +308,41 @@ public class frm_reservations extends javax.swing.JInternalFrame {
                                         .addComponent(jdc_date_exit_res, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
                                         .addComponent(jdc_date_checkin_res, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                             .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
-                                .addComponent(lbl_state_res)
+                                .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbl_type)
+                                    .addComponent(lbl_date_res))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cmb_state_res, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cmb_type_res, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jdc_date_res, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(124, 124, 124))
+                    .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
+                        .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
+                                .addComponent(lbl_cadProd)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txt_id_res, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
+                                .addComponent(lbl_bedroom)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpa_cadQuartosLayout.createSequentialGroup()
+                                .addComponent(lbl_client)
+                                .addGap(34, 34, 34)
+                                .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
+                                        .addComponent(txt_number_br, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btn_bedroom, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
+                                        .addComponent(txt_nom_client, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(24, 24, 24)
+                                        .addComponent(btn_client, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
+                                .addComponent(lbl_employee)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txt_nom_employee, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(74, 74, 74)))
+                        .addContainerGap())))
         );
         jpa_cadQuartosLayout.setVerticalGroup(
             jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -370,30 +351,24 @@ public class frm_reservations extends javax.swing.JInternalFrame {
                     .addComponent(lbl_cadProd)
                     .addComponent(txt_id_res, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15)
+                .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_number_br, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_bedroom)
+                    .addComponent(btn_bedroom))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
-                        .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_id_bedroom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_number_br, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_bedroom)
-                            .addComponent(btn_bedroom))
-                        .addGap(18, 18, 18)
+                        .addGap(4, 4, 4)
                         .addComponent(lbl_client)
-                        .addGap(48, 48, 48))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpa_cadQuartosLayout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lbl_employee)
-                            .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
-                                .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txt_id_client, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_nom_client, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btn_client))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txt_id_employee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_nom_employee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                        .addGap(7, 7, 7))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_nom_client, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_client)))
+                .addGap(6, 6, 6)
+                .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_employee)
+                    .addComponent(txt_nom_employee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmb_type_res, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_type))
@@ -417,7 +392,7 @@ public class frm_reservations extends javax.swing.JInternalFrame {
                 .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmb_state_res, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_state_res))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         jpa_listaQuartos.setForeground(new java.awt.Color(204, 204, 204));
@@ -553,6 +528,24 @@ public class frm_reservations extends javax.swing.JInternalFrame {
             }
         });
 
+        txt_id_employee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_id_employeeActionPerformed(evt);
+            }
+        });
+
+        txt_id_client.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_id_clientActionPerformed(evt);
+            }
+        });
+
+        txt_id_bedroom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_id_bedroomActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -565,7 +558,14 @@ public class frm_reservations extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btn_salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(txt_id_bedroom, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txt_id_client, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_id_employee, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jpa_listaQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -574,12 +574,17 @@ public class frm_reservations extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jpa_cadQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jpa_cadQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_novo)
                     .addComponent(btn_cancelar)
                     .addComponent(btn_salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_id_employee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_id_client, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_id_bedroom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jpa_listaQuartos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -663,41 +668,17 @@ public class frm_reservations extends javax.swing.JInternalFrame {
         btn_novo.setEnabled(false);
     }//GEN-LAST:event_btn_novoActionPerformed
 
-    private void cmb_type_resActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_type_resActionPerformed
-        cmb_type_res.transferFocus();
-    }//GEN-LAST:event_cmb_type_resActionPerformed
-
-    private void txt_value_bedroom_resActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_value_bedroom_resActionPerformed
-        txt_value_bedroom_res.transferFocus();
-    }//GEN-LAST:event_txt_value_bedroom_resActionPerformed
-
     private void txt_id_bedroomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_id_bedroomActionPerformed
         txt_id_bedroom.transferFocus();
     }//GEN-LAST:event_txt_id_bedroomActionPerformed
-
-    private void txt_number_brActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_number_brActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_number_brActionPerformed
 
     private void txt_id_clientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_id_clientActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_id_clientActionPerformed
 
-    private void txt_nom_clientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nom_clientActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_nom_clientActionPerformed
-
     private void txt_id_employeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_id_employeeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_id_employeeActionPerformed
-
-    private void txt_nom_employeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nom_employeeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_nom_employeeActionPerformed
-
-    private void cmb_state_resActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_state_resActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmb_state_resActionPerformed
 
     private void btn_apagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_apagarActionPerformed
         if(!txt_id_res.getText().equals("")){
@@ -748,6 +729,30 @@ public class frm_reservations extends javax.swing.JInternalFrame {
         form.toFront();
         form.setVisible(true);
     }//GEN-LAST:event_btn_bedroomActionPerformed
+
+    private void cmb_state_resActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_state_resActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmb_state_resActionPerformed
+
+    private void txt_value_bedroom_resActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_value_bedroom_resActionPerformed
+        txt_value_bedroom_res.transferFocus();
+    }//GEN-LAST:event_txt_value_bedroom_resActionPerformed
+
+    private void txt_nom_employeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nom_employeeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_nom_employeeActionPerformed
+
+    private void txt_nom_clientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nom_clientActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_nom_clientActionPerformed
+
+    private void txt_number_brActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_number_brActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_number_brActionPerformed
+
+    private void cmb_type_resActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_type_resActionPerformed
+        cmb_type_res.transferFocus();
+    }//GEN-LAST:event_cmb_type_resActionPerformed
 
     /**
      * @param args the command line arguments
@@ -816,13 +821,13 @@ public class frm_reservations extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lbl_state_res;
     private javax.swing.JLabel lbl_type;
     private javax.swing.JLabel lbl_value_bedroom_res;
-    private javax.swing.JTextField txt_id_bedroom;
+    public static javax.swing.JTextField txt_id_bedroom;
     private javax.swing.JTextField txt_id_client;
     private javax.swing.JTextField txt_id_employee;
     private javax.swing.JTextField txt_id_res;
     private javax.swing.JTextField txt_nom_client;
     private javax.swing.JTextField txt_nom_employee;
-    private javax.swing.JTextField txt_number_br;
+    public static javax.swing.JTextField txt_number_br;
     private javax.swing.JTextField txt_pesquisar;
     private javax.swing.JTextField txt_value_bedroom_res;
     // End of variables declaration//GEN-END:variables
