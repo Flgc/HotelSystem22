@@ -70,28 +70,13 @@ public class frm_reservations extends javax.swing.JInternalFrame {
         btn_salvar.setEnabled(false);
         btn_cancelar.setEnabled(false);
         
-        txt_id_res.setText("");
         txt_id_bedroom.setText("");    
-        txt_number_br.setText("");
-        txt_id_client.setText("");
-        txt_nom_client.setText("");
-        txt_id_employee.setText("");
-        txt_nom_employee.setText("");
-        jdc_date_res.setDateFormatString("");
-        jdc_date_checkin_res.setDateFormatString("");
-        jdc_date_exit_res.setDateFormatString("");
         txt_value_bedroom_res.setText("");      
     }
 
       void componentEnable(){
         
         txt_id_res.setVisible(false);
-//        txt_id_bedroom.setEnabled(true);
-//        txt_number_br.setEnabled(true);
-//        txt_id_client.setEnabled(true);
-//        txt_nom_client.setEnabled(true);
-//        txt_id_employee.setEnabled(true);
-//        txt_nom_employee.setEnabled(true);
         cmb_type_res.setEnabled(true);
         jdc_date_res.setEnabled(true);
         jdc_date_checkin_res.setEnabled(true);
@@ -105,17 +90,8 @@ public class frm_reservations extends javax.swing.JInternalFrame {
         btn_salvar.setEnabled(true);
         btn_cancelar.setEnabled(true);
         
-        txt_id_res.setText("");
-        txt_id_bedroom.setText("");    
-        txt_number_br.setText("");
-        txt_id_client.setText("");
-        txt_nom_client.setText("");
-//        txt_id_employee.setText("");
-//        txt_nom_employee.setText("");
-        jdc_date_res.setDateFormatString("");
-        jdc_date_checkin_res.setDateFormatString("");
-        jdc_date_exit_res.setDateFormatString("");
-        txt_value_bedroom_res.setText("");   
+        txt_id_bedroom.setText(""); 
+        txt_value_bedroom_res.setText("");  
     }  
       
       void showSearch(String searching){
@@ -136,14 +112,6 @@ public class frm_reservations extends javax.swing.JInternalFrame {
     void cleanField(){
         txt_id_res.setText("");
         txt_id_bedroom.setText("");    
-        txt_number_br.setText("");
-        txt_id_client.setText("");
-        txt_nom_client.setText("");
-//        txt_id_employee.setText("");
-//        txt_nom_employee.setText("");
-        jdc_date_res.setDate(Date.valueOf(""));
-        jdc_date_checkin_res.setDate(Date.valueOf(""));
-        jdc_date_exit_res.setDate(Date.valueOf(""));
         txt_value_bedroom_res.setText(""); 
     }      
 
@@ -299,28 +267,11 @@ public class frm_reservations extends javax.swing.JInternalFrame {
                                 .addComponent(lbl_state_res)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cmb_state_res, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpa_cadQuartosLayout.createSequentialGroup()
-                                    .addComponent(lbl_value_bedroom_res)
-                                    .addGap(9, 9, 9)
-                                    .addComponent(txt_value_bedroom_res))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpa_cadQuartosLayout.createSequentialGroup()
-                                    .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lbl_date_checkin_res)
-                                        .addComponent(lbl_date_exit_res))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jdc_date_exit_res, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
-                                        .addComponent(jdc_date_checkin_res, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                             .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
-                                .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbl_type)
-                                    .addComponent(lbl_date_res))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cmb_type_res, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jdc_date_res, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(124, 124, 124))
+                                .addComponent(lbl_value_bedroom_res)
+                                .addGap(9, 9, 9)
+                                .addComponent(txt_value_bedroom_res)))
+                        .addGap(125, 125, 125))
                     .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
                         .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
@@ -347,6 +298,27 @@ public class frm_reservations extends javax.swing.JInternalFrame {
                                 .addComponent(lbl_employee)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txt_nom_employee, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())
+                    .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
+                        .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_type)
+                            .addComponent(lbl_date_res))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
+                                .addComponent(cmb_type_res, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
+                                .addComponent(jdc_date_res, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap())))
+                    .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
+                        .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_date_checkin_res)
+                            .addComponent(lbl_date_exit_res))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jdc_date_checkin_res, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jdc_date_exit_res, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())))
         );
         jpa_cadQuartosLayout.setVerticalGroup(
@@ -607,7 +579,7 @@ public class frm_reservations extends javax.swing.JInternalFrame {
 
         dts.setIdbedroom(Integer.parseInt(txt_id_bedroom.getText()));
         dts.setIdclient(Integer.parseInt(txt_id_client.getText()));
-        dts.setIdemployee(idemployee);
+        dts.setIdemployee(Integer.parseInt(txt_id_employee.getText()));
 
         int selectedItem = cmb_type_res.getSelectedIndex();
         dts.setTyperes((String) cmb_type_res.getItemAt(selectedItem));

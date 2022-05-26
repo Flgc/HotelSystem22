@@ -72,8 +72,8 @@ public class ConnectFormReservations {
     }  
     
     public boolean insert(Vreservations dts){
-        sSql = "insert into tb_reservations( id_res, id_bedroom, id_client, id_employee, type_res, date_res,"
-                + " date_checkin_res, date_exit_res, value_bedroom_res, state_res) values (?,?,?,?,?,?,?,?,?,?)";
+        sSql = "insert into tb_reservations( id_bedroom, id_client, id_employee, type_res, date_res,"
+                + " date_checkin_res, date_exit_res, value_bedroom_res, state_res) values (?,?,?,?,?,?,?,?,?)";
 
         try {
             PreparedStatement pst=cn.prepareStatement(sSql);
