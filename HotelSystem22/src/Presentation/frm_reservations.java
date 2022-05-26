@@ -280,6 +280,11 @@ public class frm_reservations extends javax.swing.JInternalFrame {
         });
 
         btn_client.setText("...");
+        btn_client.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_clientActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpa_cadQuartosLayout = new javax.swing.GroupLayout(jpa_cadQuartos);
         jpa_cadQuartos.setLayout(jpa_cadQuartosLayout);
@@ -355,7 +360,6 @@ public class frm_reservations extends javax.swing.JInternalFrame {
                     .addComponent(txt_number_br, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_bedroom)
                     .addComponent(btn_bedroom))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
                         .addGap(4, 4, 4)
@@ -754,6 +758,12 @@ public class frm_reservations extends javax.swing.JInternalFrame {
         cmb_type_res.transferFocus();
     }//GEN-LAST:event_cmb_type_resActionPerformed
 
+    private void btn_clientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clientActionPerformed
+        frm_search_client form = new frm_search_client();
+        form.toFront();
+        form.setVisible(true);
+    }//GEN-LAST:event_btn_clientActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -822,10 +832,10 @@ public class frm_reservations extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lbl_type;
     private javax.swing.JLabel lbl_value_bedroom_res;
     public static javax.swing.JTextField txt_id_bedroom;
-    private javax.swing.JTextField txt_id_client;
+    public static javax.swing.JTextField txt_id_client;
     private javax.swing.JTextField txt_id_employee;
     private javax.swing.JTextField txt_id_res;
-    private javax.swing.JTextField txt_nom_client;
+    public static javax.swing.JTextField txt_nom_client;
     private javax.swing.JTextField txt_nom_employee;
     public static javax.swing.JTextField txt_number_br;
     private javax.swing.JTextField txt_pesquisar;
