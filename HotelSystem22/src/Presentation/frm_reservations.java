@@ -77,21 +77,21 @@ public class frm_reservations extends javax.swing.JInternalFrame {
         txt_nom_client.setText("");
         txt_id_employee.setText("");
         txt_nom_employee.setText("");
-        jdc_date_res.setDate(Date.valueOf(""));
-        jdc_date_checkin_res.setDate(Date.valueOf(""));
-        jdc_date_exit_res.setDate(Date.valueOf(""));
+        jdc_date_res.setDateFormatString("");
+        jdc_date_checkin_res.setDateFormatString("");
+        jdc_date_exit_res.setDateFormatString("");
         txt_value_bedroom_res.setText("");      
     }
 
       void componentEnable(){
         
         txt_id_res.setVisible(false);
-        txt_id_bedroom.setEnabled(true);
-        txt_number_br.setEnabled(true);
-        txt_id_client.setEnabled(true);
-        txt_nom_client.setEnabled(true);
-        txt_id_employee.setEnabled(true);
-        txt_nom_employee.setEnabled(true);
+//        txt_id_bedroom.setEnabled(true);
+//        txt_number_br.setEnabled(true);
+//        txt_id_client.setEnabled(true);
+//        txt_nom_client.setEnabled(true);
+//        txt_id_employee.setEnabled(true);
+//        txt_nom_employee.setEnabled(true);
         cmb_type_res.setEnabled(true);
         jdc_date_res.setEnabled(true);
         jdc_date_checkin_res.setEnabled(true);
@@ -112,9 +112,9 @@ public class frm_reservations extends javax.swing.JInternalFrame {
         txt_nom_client.setText("");
         txt_id_employee.setText("");
         txt_nom_employee.setText("");
-        jdc_date_res.setDate(Date.valueOf(""));
-        jdc_date_checkin_res.setDate(Date.valueOf(""));
-        jdc_date_exit_res.setDate(Date.valueOf(""));
+        jdc_date_res.setDateFormatString("");
+        jdc_date_checkin_res.setDateFormatString("");
+        jdc_date_exit_res.setDateFormatString("");
         txt_value_bedroom_res.setText("");   
     }  
       
@@ -204,7 +204,7 @@ public class frm_reservations extends javax.swing.JInternalFrame {
 
         jpa_cadQuartos.setForeground(new java.awt.Color(204, 204, 204));
 
-        lbl_cadProd.setFont(new java.awt.Font("Times New Roman", 1, 11)); // NOI18N
+        lbl_cadProd.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         lbl_cadProd.setText("Cadastro de Reservas");
 
         lbl_bedroom.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
@@ -291,6 +291,11 @@ public class frm_reservations extends javax.swing.JInternalFrame {
         });
 
         btn_bedroom.setText("...");
+        btn_bedroom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_bedroomActionPerformed(evt);
+            }
+        });
 
         btn_client.setText("...");
 
@@ -412,12 +417,12 @@ public class frm_reservations extends javax.swing.JInternalFrame {
                 .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmb_state_res, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_state_res))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jpa_listaQuartos.setForeground(new java.awt.Color(204, 204, 204));
 
-        lbl_listaReservations.setFont(new java.awt.Font("Times New Roman", 1, 11)); // NOI18N
+        lbl_listaReservations.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         lbl_listaReservations.setText("Lista de Reservas");
 
         TB_Lista.setModel(new javax.swing.table.DefaultTableModel(
@@ -480,35 +485,43 @@ public class frm_reservations extends javax.swing.JInternalFrame {
             .addGroup(jpa_listaQuartosLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jpa_listaQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lbl_registros)
-                    .addGroup(jpa_listaQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 617, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lbl_listaReservations)
-                        .addGroup(jpa_listaQuartosLayout.createSequentialGroup()
-                            .addComponent(lbl_pesquisar)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(txt_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btn_buscar)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(btn_apagar)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(btn_sair)))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpa_listaQuartosLayout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 936, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(jpa_listaQuartosLayout.createSequentialGroup()
+                        .addComponent(lbl_registros)
+                        .addGap(28, 28, 28))))
+            .addGroup(jpa_listaQuartosLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jpa_listaQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpa_listaQuartosLayout.createSequentialGroup()
+                        .addComponent(lbl_pesquisar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txt_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_buscar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_apagar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_sair))
+                    .addComponent(lbl_listaReservations))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jpa_listaQuartosLayout.setVerticalGroup(
             jpa_listaQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpa_listaQuartosLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(lbl_listaReservations)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jpa_listaQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_buscar)
                     .addComponent(btn_sair)
                     .addComponent(btn_apagar)
                     .addComponent(lbl_pesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_registros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(15, 15, 15))
         );
@@ -546,82 +559,35 @@ public class frm_reservations extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jpa_cadQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jpa_listaQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jpa_cadQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btn_novo, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btn_salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jpa_listaQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jpa_listaQuartos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jpa_cadQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
+                .addComponent(jpa_cadQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_novo)
                     .addComponent(btn_cancelar)
                     .addComponent(btn_salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jpa_listaQuartos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void TB_ListaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TB_ListaMouseClicked
-        btn_salvar.setText("Editar");
-        componentEnable();
-        btn_apagar.setEnabled(true);
-        action="edit";
-        int rowActive = TB_Lista.rowAtPoint(evt.getPoint());
-
-        txt_id_res.setText(TB_Lista.getValueAt(rowActive, 0).toString());
-        txt_id_bedroom.setText(TB_Lista.getValueAt(rowActive, 1).toString());
-        txt_number_br.setText(TB_Lista.getValueAt(rowActive, 2).toString());
-        txt_id_client.setText(TB_Lista.getValueAt(rowActive, 3).toString());
-        txt_nom_client.setText(TB_Lista.getValueAt(rowActive, 4).toString());
-        txt_id_employee.setText(TB_Lista.getValueAt(rowActive, 5).toString());
-        txt_nom_employee.setText(TB_Lista.getValueAt(rowActive, 6).toString());
-        cmb_type_res.setSelectedItem(TB_Lista.getValueAt(rowActive, 7).toString());
-        jdc_date_res.setDate(Date.valueOf(TB_Lista.getValueAt(rowActive, 8).toString()));
-        jdc_date_checkin_res.setDate(Date.valueOf(TB_Lista.getValueAt(rowActive, 9).toString()));
-        jdc_date_exit_res.setDate(Date.valueOf(TB_Lista.getValueAt(rowActive, 10).toString()));
-        txt_value_bedroom_res.setText(TB_Lista.getValueAt(rowActive, 11).toString());   
-        cmb_state_res.setSelectedItem(TB_Lista.getValueAt(rowActive, 12).toString());
-    }//GEN-LAST:event_TB_ListaMouseClicked
-
-    private void btn_sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sairActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_btn_sairActionPerformed
-
-    private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
-        showSearch(txt_pesquisar.getText());
-    }//GEN-LAST:event_btn_buscarActionPerformed
-
-    private void btn_apagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_apagarActionPerformed
-        if(!txt_id_res.getText().equals("")){
-            int confirmation = JOptionPane.showConfirmDialog(rootPane, "Deseja realmente excluir esse registro?", "Excluir", 2);
-            if (confirmation == 0){
-                ConnectFormReservations func = new ConnectFormReservations();
-                Vreservations dts = new Vreservations();
-                dts.setIdres(Integer.parseInt(txt_id_res.getText()));
-                func.delete(dts);
-                showSearch("");
-                componentDisable();
-            }
-        }
-    }//GEN-LAST:event_btn_apagarActionPerformed
 
     private void btn_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvarActionPerformed
         if (txt_number_br.getText().length() == 0){
@@ -732,6 +698,56 @@ public class frm_reservations extends javax.swing.JInternalFrame {
     private void cmb_state_resActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_state_resActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmb_state_resActionPerformed
+
+    private void btn_apagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_apagarActionPerformed
+        if(!txt_id_res.getText().equals("")){
+            int confirmation = JOptionPane.showConfirmDialog(rootPane, "Deseja realmente excluir esse registro?", "Excluir", 2);
+            if (confirmation == 0){
+                ConnectFormReservations func = new ConnectFormReservations();
+                Vreservations dts = new Vreservations();
+                dts.setIdres(Integer.parseInt(txt_id_res.getText()));
+                func.delete(dts);
+                showSearch("");
+                componentDisable();
+            }
+        }
+    }//GEN-LAST:event_btn_apagarActionPerformed
+
+    private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
+        showSearch(txt_pesquisar.getText());
+    }//GEN-LAST:event_btn_buscarActionPerformed
+
+    private void btn_sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sairActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btn_sairActionPerformed
+
+    private void TB_ListaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TB_ListaMouseClicked
+        btn_salvar.setText("Editar");
+        componentEnable();
+        btn_apagar.setEnabled(true);
+        action="edit";
+        int rowActive = TB_Lista.rowAtPoint(evt.getPoint());
+
+        txt_id_res.setText(TB_Lista.getValueAt(rowActive, 0).toString());
+        txt_id_bedroom.setText(TB_Lista.getValueAt(rowActive, 1).toString());
+        txt_number_br.setText(TB_Lista.getValueAt(rowActive, 2).toString());
+        txt_id_client.setText(TB_Lista.getValueAt(rowActive, 3).toString());
+        txt_nom_client.setText(TB_Lista.getValueAt(rowActive, 4).toString());
+        txt_id_employee.setText(TB_Lista.getValueAt(rowActive, 5).toString());
+        txt_nom_employee.setText(TB_Lista.getValueAt(rowActive, 6).toString());
+        cmb_type_res.setSelectedItem(TB_Lista.getValueAt(rowActive, 7).toString());
+        jdc_date_res.setDate(Date.valueOf(TB_Lista.getValueAt(rowActive, 8).toString()));
+        jdc_date_checkin_res.setDate(Date.valueOf(TB_Lista.getValueAt(rowActive, 9).toString()));
+        jdc_date_exit_res.setDate(Date.valueOf(TB_Lista.getValueAt(rowActive, 10).toString()));
+        txt_value_bedroom_res.setText(TB_Lista.getValueAt(rowActive, 11).toString());
+        cmb_state_res.setSelectedItem(TB_Lista.getValueAt(rowActive, 12).toString());
+    }//GEN-LAST:event_TB_ListaMouseClicked
+
+    private void btn_bedroomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bedroomActionPerformed
+        frm_search_bedrooms form = new frm_search_bedrooms();
+        form.toFront();
+        form.setVisible(true);
+    }//GEN-LAST:event_btn_bedroomActionPerformed
 
     /**
      * @param args the command line arguments

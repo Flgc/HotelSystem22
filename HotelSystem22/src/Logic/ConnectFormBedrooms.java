@@ -56,7 +56,42 @@ public class ConnectFormBedrooms {
             JOptionPane.showConfirmDialog(null, e);
             return null;
         }
-    }  
+    } 
+
+    public DefaultTableModel showSearchBedrooms(String searching){
+        
+        DefaultTableModel model;
+        String [ ] titles = {"ID", "Número", "Andar", "Descrição", "Característica", "Preço", "Estado","Tipo"};
+        String [ ] records = new String[8];
+        recordTotal = 0;
+        
+        model = new DefaultTableModel(null, titles);
+        
+        sSql = "select * from tb_bedroom where floor_br like '%"+searching+"%' and state_br='Disponível'"
+                + " order by id_br";
+
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs=st.executeQuery(sSql);
+            while(rs.next()){
+                records [0]=rs.getString("id_br");
+                records [1]=rs.getString("number_br");
+                records [2]=rs.getString("floor_br");
+                records [3]=rs.getString("description_br");
+                records [4]=rs.getString("characteristics_br");
+                records [5]=rs.getString("dialy_Price_br");
+                records [6]=rs.getString("state_br");
+                records [7]=rs.getString("type_br");   
+                
+                recordTotal = recordTotal + 1;
+                model.addRow(records);
+            }       
+            return model;
+        } catch (SQLException e) {
+            JOptionPane.showConfirmDialog(null, e);
+            return null;
+        }
+    }    
     
     public boolean insert(Vbedrooms dts){
         sSql = "insert into tb_bedroom  (number_br, floor_br, description_br, characteristics_br, dialy_Price_br, state_br, " + 

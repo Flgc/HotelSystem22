@@ -116,6 +116,11 @@ public class frm_menu extends javax.swing.JFrame {
         subMenuReservasConsumption.setMnemonic('c');
         subMenuReservasConsumption.setText("Reservas e Consumos");
         subMenuReservasConsumption.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        subMenuReservasConsumption.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subMenuReservasConsumptionActionPerformed(evt);
+            }
+        });
         menuReservation.add(subMenuReservasConsumption);
 
         subMenuClient.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/clientes.png"))); // NOI18N
@@ -224,6 +229,13 @@ public class frm_menu extends javax.swing.JFrame {
     private void menuExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuExitMouseClicked
         this.dispose();
     }//GEN-LAST:event_menuExitMouseClicked
+
+    private void subMenuReservasConsumptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subMenuReservasConsumptionActionPerformed
+        frm_reservations form = new frm_reservations();
+        desktopPaneMenu.add(form);
+        form.toFront();
+        form.setVisible(true);
+    }//GEN-LAST:event_subMenuReservasConsumptionActionPerformed
 
     /**
      * @param args the command line arguments

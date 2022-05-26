@@ -36,10 +36,10 @@ public class ConnectFormReservations {
         
         model = new DefaultTableModel(null, titles);
         
-        sSql = "select r.id_res,r.id_bedroom,b.number_br,r.id_client"
-                + "(select name_peop from tb_people where id_peop=r.id_client) as clienten"
-                + "r.id_employee,(select name_peop from tb_people where id_peop=r.id_employee) as emploeeen"
-                + "r.type_res, date_res,date_checkin_res,date_exit_res"
+        sSql = "select r.id_res,r.id_bedroom,b.number_br,r.id_client,"
+                + "(select name_peop from tb_people where id_peop=r.id_client) as clienten,"
+                + "r.id_employee,(select name_peop from tb_people where id_peop=r.id_employee) as emploeeen,"
+                + "r.type_res, date_res,date_checkin_res,date_exit_res,"
                 + "r.value_bedroom_res,r.state_res from tb_reservations r inner join  tb_bedroom b on "
                 + "r.id_bedroom=b.id_br  where r.date_res like '%"+searching+"%' order by id_res desc";
         
