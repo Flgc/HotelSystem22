@@ -77,9 +77,9 @@ public class frm_reservations extends javax.swing.JInternalFrame {
         txt_nom_client.setText("");
         txt_id_employee.setText("");
         txt_nom_employee.setText("");
-        jdc_date_res.setDateFormatString("");
-        jdc_date_checkin_res.setDateFormatString("");
-        jdc_date_exit_res.setDateFormatString("");
+        jdc_date_res.setDate(Date.valueOf(""));
+        jdc_date_checkin_res.setDate(Date.valueOf(""));
+        jdc_date_exit_res.setDate(Date.valueOf(""));
         txt_value_bedroom_res.setText("");      
     }
 
@@ -112,9 +112,9 @@ public class frm_reservations extends javax.swing.JInternalFrame {
         txt_nom_client.setText("");
         txt_id_employee.setText("");
         txt_nom_employee.setText("");
-        jdc_date_res.setDateFormatString("");
-        jdc_date_checkin_res.setDateFormatString("");
-        jdc_date_exit_res.setDateFormatString("");
+        jdc_date_res.setDate(Date.valueOf(""));
+        jdc_date_checkin_res.setDate(Date.valueOf(""));
+        jdc_date_exit_res.setDate(Date.valueOf(""));
         txt_value_bedroom_res.setText("");   
     }  
       
@@ -141,9 +141,9 @@ public class frm_reservations extends javax.swing.JInternalFrame {
         txt_nom_client.setText("");
         txt_id_employee.setText("");
         txt_nom_employee.setText("");
-        jdc_date_res.setDateFormatString("");
-        jdc_date_checkin_res.setDateFormatString("");
-        jdc_date_exit_res.setDateFormatString("");
+        jdc_date_res.setDate(Date.valueOf(""));
+        jdc_date_checkin_res.setDate(Date.valueOf(""));
+        jdc_date_exit_res.setDate(Date.valueOf(""));
         txt_value_bedroom_res.setText(""); 
     }      
 
@@ -588,8 +588,17 @@ public class frm_reservations extends javax.swing.JInternalFrame {
 
         txt_id_res.setText(TB_Lista.getValueAt(rowActive, 0).toString());
         txt_id_bedroom.setText(TB_Lista.getValueAt(rowActive, 1).toString());
-        cmb_type_res.setSelectedItem(TB_Lista.getValueAt(rowActive, 3).toString());
-        txt_value_bedroom_res.setText(TB_Lista.getValueAt(rowActive, 4).toString());      
+        txt_number_br.setText(TB_Lista.getValueAt(rowActive, 2).toString());
+        txt_id_client.setText(TB_Lista.getValueAt(rowActive, 3).toString());
+        txt_nom_client.setText(TB_Lista.getValueAt(rowActive, 4).toString());
+        txt_id_employee.setText(TB_Lista.getValueAt(rowActive, 5).toString());
+        txt_nom_employee.setText(TB_Lista.getValueAt(rowActive, 6).toString());
+        cmb_type_res.setSelectedItem(TB_Lista.getValueAt(rowActive, 7).toString());
+        jdc_date_res.setDate(Date.valueOf(TB_Lista.getValueAt(rowActive, 8).toString()));
+        jdc_date_checkin_res.setDate(Date.valueOf(TB_Lista.getValueAt(rowActive, 9).toString()));
+        jdc_date_exit_res.setDate(Date.valueOf(TB_Lista.getValueAt(rowActive, 10).toString()));
+        txt_value_bedroom_res.setText(TB_Lista.getValueAt(rowActive, 11).toString());   
+        cmb_state_res.setSelectedItem(TB_Lista.getValueAt(rowActive, 12).toString());
     }//GEN-LAST:event_TB_ListaMouseClicked
 
     private void btn_sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sairActionPerformed
