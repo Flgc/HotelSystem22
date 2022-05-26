@@ -235,6 +235,9 @@ public class frm_menu extends javax.swing.JFrame {
         desktopPaneMenu.add(form);
         form.toFront();
         form.setVisible(true);
+        
+        frm_reservations.txt_id_employee.setText(lbl_ID.getText());
+        frm_reservations.txt_nom_employee.setText(lbl_Name.getText());
     }//GEN-LAST:event_subMenuReservasConsumptionActionPerformed
 
     /**

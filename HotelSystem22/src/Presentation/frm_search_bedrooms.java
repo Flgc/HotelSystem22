@@ -20,7 +20,7 @@ public class frm_search_bedrooms extends javax.swing.JFrame {
      */
     public frm_search_bedrooms() {
         initComponents();
-        showSearch("null");        
+        showSearch("");        
         this.setLocationRelativeTo(null);         
     }
     

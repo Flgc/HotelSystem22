@@ -142,6 +142,7 @@
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   <Component id="lbl_client" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -160,8 +161,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="lbl_employee" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="txt_nom_employee" min="-2" pref="185" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+                                  <Component id="txt_nom_employee" min="-2" pref="259" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -180,26 +180,23 @@
                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="txt_number_br" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lbl_bedroom" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbl_bedroom" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                       <Component id="btn_bedroom" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
-                          <Component id="lbl_client" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                          <Component id="txt_nom_client" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btn_client" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lbl_employee" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txt_nom_employee" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_nom_client" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_client" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                          <Component id="lbl_client" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace pref="12" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="txt_nom_employee" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbl_employee" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="cmb_type_res" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lbl_type" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -229,7 +226,7 @@
                       <Component id="cmb_state_res" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lbl_state_res" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="15" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -315,6 +312,9 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_nom_employeeActionPerformed"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="lbl_date_res">
           <Properties>
@@ -613,6 +613,9 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_id_employeeActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="txt_id_client">
       <Events>

@@ -20,7 +20,7 @@ public class frm_search_client extends javax.swing.JFrame {
      */
     public frm_search_client() {
         initComponents();
-        showSearch("null");        
+        showSearch("");        
         this.setLocationRelativeTo(null);         
     }
     

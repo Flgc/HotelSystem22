@@ -110,8 +110,8 @@ public class frm_reservations extends javax.swing.JInternalFrame {
         txt_number_br.setText("");
         txt_id_client.setText("");
         txt_nom_client.setText("");
-        txt_id_employee.setText("");
-        txt_nom_employee.setText("");
+//        txt_id_employee.setText("");
+//        txt_nom_employee.setText("");
         jdc_date_res.setDateFormatString("");
         jdc_date_checkin_res.setDateFormatString("");
         jdc_date_exit_res.setDateFormatString("");
@@ -139,8 +139,8 @@ public class frm_reservations extends javax.swing.JInternalFrame {
         txt_number_br.setText("");
         txt_id_client.setText("");
         txt_nom_client.setText("");
-        txt_id_employee.setText("");
-        txt_nom_employee.setText("");
+//        txt_id_employee.setText("");
+//        txt_nom_employee.setText("");
         jdc_date_res.setDate(Date.valueOf(""));
         jdc_date_checkin_res.setDate(Date.valueOf(""));
         jdc_date_exit_res.setDate(Date.valueOf(""));
@@ -331,6 +331,7 @@ public class frm_reservations extends javax.swing.JInternalFrame {
                                 .addComponent(lbl_bedroom)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpa_cadQuartosLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(lbl_client)
                                 .addGap(34, 34, 34)
                                 .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -345,8 +346,7 @@ public class frm_reservations extends javax.swing.JInternalFrame {
                             .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
                                 .addComponent(lbl_employee)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txt_nom_employee, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(74, 74, 74)))
+                                .addComponent(txt_nom_employee, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap())))
         );
         jpa_cadQuartosLayout.setVerticalGroup(
@@ -358,21 +358,19 @@ public class frm_reservations extends javax.swing.JInternalFrame {
                 .addGap(15, 15, 15)
                 .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_number_br, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_bedroom)
+                    .addComponent(lbl_bedroom, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_bedroom))
-                .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_nom_client, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_client)
                     .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
                         .addGap(4, 4, 4)
-                        .addComponent(lbl_client)
-                        .addGap(7, 7, 7))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txt_nom_client, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_client)))
-                .addGap(6, 6, 6)
+                        .addComponent(lbl_client, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_employee)
-                    .addComponent(txt_nom_employee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                    .addComponent(txt_nom_employee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_employee, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
                 .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmb_type_res, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_type))
@@ -396,7 +394,7 @@ public class frm_reservations extends javax.swing.JInternalFrame {
                 .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmb_state_res, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_state_res))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jpa_listaQuartos.setForeground(new java.awt.Color(204, 204, 204));
@@ -833,10 +831,10 @@ public class frm_reservations extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lbl_value_bedroom_res;
     public static javax.swing.JTextField txt_id_bedroom;
     public static javax.swing.JTextField txt_id_client;
-    private javax.swing.JTextField txt_id_employee;
+    public static javax.swing.JTextField txt_id_employee;
     private javax.swing.JTextField txt_id_res;
     public static javax.swing.JTextField txt_nom_client;
-    private javax.swing.JTextField txt_nom_employee;
+    public static javax.swing.JTextField txt_nom_employee;
     public static javax.swing.JTextField txt_number_br;
     private javax.swing.JTextField txt_pesquisar;
     private javax.swing.JTextField txt_value_bedroom_res;
