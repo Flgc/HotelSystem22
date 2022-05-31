@@ -5,7 +5,7 @@
  */
 package Logic;
 
-import Data.Vproducts;
+import Data.Vpayment;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author fabio
  */
-public class ConnectFormProducts {
+public class ConnectFormPayment {
     
     private Connections mysql=new Connections();
     private Connection cn=mysql.connect();
@@ -28,23 +28,26 @@ public class ConnectFormProducts {
     public DefaultTableModel showSearch(String searching){
         
         DefaultTableModel model;
-        String [ ] titles = {"ID", "Produto", "Descrição", "Und", "Preço"};
-        String [ ] records = new String[5];
+        String [ ] titles = {"ID PGTO", "ID Reservas", "Tipo Comprovante", "Num. Comprovante", "Taxa", "Total Pagamento","DAta Emissão", "Data pagamento"};
+        String [ ] records = new String[8];
         recordTotal = 0;
         
         model = new DefaultTableModel(null, titles);
         
-        sSql = "select * from tb_product where name_prod like '%"+searching+"%' order by id_prod";
+        sSql = "select * from tb_payment where id_reservat"+searching+" order by id_pay";
         
         try {
             Statement st = cn.createStatement();
             ResultSet rs=st.executeQuery(sSql);
             while(rs.next()){
-                records [0]=rs.getString("id_prod");
-                records [1]=rs.getString("name_prod");
-                records [2]=rs.getString("descript_prod");
-                records [3]=rs.getString("und_prod");
-                records [4]=rs.getString("price_prod");
+                records [0]=rs.getString("id_pay");
+                records [1]=rs.getString("id_reservat");
+                records [2]=rs.getString("type_pay");
+                records [3]=rs.getString("number_pay");
+                records [4]=rs.getString("rate_pay");
+                records [5]=rs.getString("total_pay");
+                records [6]=rs.getString("date_pay");
+                records [7]=rs.getString("emission_pay");
                 
                 recordTotal = recordTotal + 1;
                 model.addRow(records);
@@ -56,15 +59,19 @@ public class ConnectFormProducts {
         }
     }  
     
-    public boolean insert(Vproducts dts){
-        sSql = "insert into tb_product  (name_prod, descript_prod, und_prod, price_prod) values(?,?,?,?)";
+    public boolean insert(Vpayment dts){
+        sSql = "insert into tb_payment  (id_reservat,type_pay, number_pay, rate_pay, total_pay, date_pay, emission_pay)"
+                + " values(?,?,?,?,?,?,?)";
         try {
             PreparedStatement pst=cn.prepareStatement(sSql);
             // Insert record  on fields
-            pst.setString(1, dts.getName());
-            pst.setString(2, dts.getDescription());
-            pst.setString(3, dts.getUnd());
-            pst.setDouble(4, dts.getPriceProduct());
+            pst.setInt(1, dts.getIdreservat());
+            pst.setString(2, dts.getTypepay());
+            pst.setInt(3, dts.getNumberpay());
+            pst.setDouble(4, dts.getRatepay());
+            pst.setDouble(5, dts.getTotalpay());
+            pst.setDate(6, dts.getDate_pay());
+            pst.setDate(7, dts.getEmissionpay());
             
             int n=pst.executeUpdate();
             if (n!=0) {
@@ -78,17 +85,21 @@ public class ConnectFormProducts {
         }        
     }
 
-    public boolean edit(Vproducts dts){
-        sSql = "update tb_product  set name_prod=?,  descript_prod=?,  und_prod=?,  price_prod=?"+
-                " where id_prod=?";
+    public boolean edit(Vpayment dts){
+        sSql = "update tb_payment  set id_reservat=?, type_pay=?, number_pay=?, rate_pay=?, total_pay=?,"+
+                "date_pay=?,emission_pay=? where id_pay=?";
         try {
             PreparedStatement pst=cn.prepareStatement(sSql);
             // update record  on fields
-            pst.setString(1, dts.getName());
-            pst.setString(2, dts.getDescription());
-            pst.setString(3, dts.getUnd());
-            pst.setDouble(4, dts.getPriceProduct());
-            pst.setInt(5, dts.getIdproduct());
+            pst.setInt(1, dts.getIdreservat());
+            pst.setString(2, dts.getTypepay());
+            pst.setInt(3, dts.getNumberpay());
+            pst.setDouble(4, dts.getRatepay());
+            pst.setDouble(5, dts.getTotalpay());
+            pst.setDate(6, dts.getDate_pay());
+            pst.setDate(7, dts.getEmissionpay());
+            
+            pst.setInt(8, dts.getIdpay());
             
             int n=pst.executeUpdate();
             if (n!=0) {
@@ -102,11 +113,11 @@ public class ConnectFormProducts {
         }        
     }   
     
-        public boolean delete(Vproducts dts){
-        sSql = "delete from tb_product  where id_prod=?";
+        public boolean delete(Vpayment dts){
+        sSql = "delete from tb_payment  where id_pay=?";
         try {
             PreparedStatement pst=cn.prepareStatement(sSql);              
-            pst.setInt(1, dts.getIdproduct());
+            pst.setInt(1, dts.getIdpay());
             int n=pst.executeUpdate();
             if (n!=0) {
                 return true;
