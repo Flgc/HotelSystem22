@@ -36,7 +36,7 @@ public class ConnectFormConsum {
         
         model = new DefaultTableModel(null, titles);
         
-        sSql = "select c.id_con,c.id_reservat,c.id_product,p.name_prod,c.quantity_con,c.price_con"
+        sSql = "select c.id_con,c.id_reservat,c.id_product,p.name_prod,c.quantity_con,c.price_con,"
                 + "c.state_res from tb_consum c inner join  tb_product p on c.id_product=p.id_prod"
                 + " where c.id_reservat ="+searching+" order by c.id_con desc";
         
@@ -47,9 +47,10 @@ public class ConnectFormConsum {
                 records [0]=rs.getString("id_con");
                 records [1]=rs.getString("id_reservat");
                 records [2]=rs.getString("id_product");
-                records [3]=rs.getString("quantity_con");
-                records [4]=rs.getString("price_con");
-                records [5]=rs.getString("state_res");
+                records [3]=rs.getString("name_prod");
+                records [4]=rs.getString("quantity_con");
+                records [5]=rs.getString("price_con");
+                records [6]=rs.getString("state_res");
                 
                 recordTotal = recordTotal + 1;
                 comsumTotal = comsumTotal + (rs.getDouble("quantity_con")*rs.getDouble("price_con"));
@@ -84,7 +85,7 @@ public class ConnectFormConsum {
             JOptionPane.showConfirmDialog(null, e);
             return false;
         }        
-    }
+    } 
 
     public boolean edit(Vconsum dts){
                  sSql = "update tb_consum set id_reservat=?, id_product=?, quantity_con=?, price_con=?, "

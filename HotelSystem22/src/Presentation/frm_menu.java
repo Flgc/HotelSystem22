@@ -276,7 +276,7 @@ public class frm_menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane desktopPaneMenu;
+    public static javax.swing.JDesktopPane desktopPaneMenu;
     private javax.swing.JMenuItem jMenuItem1;
     public static javax.swing.JLabel lbl_Acess;
     public static javax.swing.JLabel lbl_ID;

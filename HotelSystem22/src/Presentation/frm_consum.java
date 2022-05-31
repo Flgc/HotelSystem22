@@ -25,8 +25,8 @@ public class frm_consum extends javax.swing.JInternalFrame {
     public frm_consum() {
         initComponents();
         componentDisable();
-        showSearch("idreservationscurrent");        
-        txt_name_client.setText(idreservations);
+        showSearch("id_reservat");        
+        txt_name_client.setText(clients);
         txt_id_reserv.setText(idreservations);
     }
 
@@ -49,8 +49,8 @@ public class frm_consum extends javax.swing.JInternalFrame {
     
     void componentDisable(){
         txt_id_con.setVisible(false);
-//        txt_id_produc.setVisible(false);
-//        txt_id_reserv.setVisible(false);
+        txt_id_produc.setVisible(false);;
+        txt_id_reserv.setVisible(false);
 
         cmb_state_cons.setEnabled(false);
         txt_name_client.setEnabled(false);
@@ -62,7 +62,6 @@ public class frm_consum extends javax.swing.JInternalFrame {
         btn_find_prod.setEnabled(false);
         btn_cancelar.setEnabled(false);
         
-        txt_name_client.setText("");
         txt_name_product.setText("");
         txt_price_consu.setText("");
         txt_qtd_cons.setText("");
@@ -72,16 +71,15 @@ public class frm_consum extends javax.swing.JInternalFrame {
         txt_id_con.setVisible(false);
         
         cmb_state_cons.setEnabled(true);
-        txt_name_client.setEnabled(true);
-        txt_name_product.setEnabled(true);
-        txt_price_consu.setEnabled(true);
+        txt_name_client.setEnabled(false);
+        txt_name_product.setEnabled(false);
+        txt_price_consu.setEnabled(false);
         txt_qtd_cons.setEnabled(true);
         
         btn_salvar.setEnabled(true);
         btn_find_prod.setEnabled(true);
         btn_cancelar.setEnabled(true);
         
-        txt_name_client.setText("");
         txt_name_product.setText("");
         txt_price_consu.setText("");
         txt_qtd_cons.setText("");
@@ -105,7 +103,6 @@ public class frm_consum extends javax.swing.JInternalFrame {
 
     void cleanField(){
         txt_id_con.setText("");
-        txt_name_client.setText("");
         txt_name_product.setText("");
         txt_price_consu.setText("");
         txt_qtd_cons.setText("");
@@ -297,13 +294,10 @@ public class frm_consum extends javax.swing.JInternalFrame {
                     .addComponent(txt_id_con, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_id_reserv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_id_produc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(txt_name_client, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lbl_client, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(lbl_client, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_name_client, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lbl_product, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -433,7 +427,7 @@ public class frm_consum extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jpa_cadQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jpa_listaQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGap(0, 0, 0))
         );
 
         pack();
@@ -465,9 +459,9 @@ public class frm_consum extends javax.swing.JInternalFrame {
             if (confirmation == 0){
                 ConnectFormConsum func = new ConnectFormConsum();
                 Vconsum dts = new Vconsum();
-                dts.setIdproduct(Integer.parseInt(txt_id_con.getText()));
+                dts.setIdcon(Integer.parseInt(txt_id_con.getText()));
                 func.delete(dts);
-                showSearch("");
+                showSearch("id_reservat");
                 componentDisable();
             }
         }
@@ -503,7 +497,7 @@ public class frm_consum extends javax.swing.JInternalFrame {
         if (action.equals("save")){
             if (func.insert(dts)){
                 JOptionPane.showMessageDialog(rootPane, "O Consumo foi registrado com sucesso!");
-                showSearch("idreservationscurrent");
+                showSearch("id_reservat");
                 componentDisable();
             }
         }
@@ -512,7 +506,7 @@ public class frm_consum extends javax.swing.JInternalFrame {
 
             if (func.edit(dts)){
                 JOptionPane.showMessageDialog(rootPane, "O Consumo foi editado com sucesso!");
-                showSearch("idreservationscurrent");
+                showSearch("id_reservat");
                 componentDisable();
             }
         }
@@ -546,7 +540,9 @@ public class frm_consum extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txt_name_productActionPerformed
 
     private void btn_find_prodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_find_prodActionPerformed
-        // TODO add your handling code here:
+        frm_search_products form = new frm_search_products();
+        form.toFront();
+        form.setVisible(true);        
     }//GEN-LAST:event_btn_find_prodActionPerformed
 
     private void txt_qtd_consActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_qtd_consActionPerformed
@@ -611,11 +607,11 @@ public class frm_consum extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lbl_registros;
     private javax.swing.JLabel lbl_state;
     private javax.swing.JTextField txt_id_con;
-    private javax.swing.JTextField txt_id_produc;
+    public static javax.swing.JTextField txt_id_produc;
     private javax.swing.JTextField txt_id_reserv;
     private javax.swing.JTextField txt_name_client;
-    private javax.swing.JTextField txt_name_product;
-    private javax.swing.JTextField txt_price_consu;
+    public static javax.swing.JTextField txt_name_product;
+    public static javax.swing.JTextField txt_price_consu;
     private javax.swing.JTextField txt_qtd_cons;
     // End of variables declaration//GEN-END:variables
 }
