@@ -131,7 +131,47 @@ public class ConnectFormReservations {
         }        
     }   
     
-        public boolean delete(Vreservations dts){
+    public boolean paidOut(Vreservations dts){
+         sSql = "update tb_reservations set state_res='PAGA' where id_res=?";
+
+        try {
+            PreparedStatement pst=cn.prepareStatement(sSql);
+            // update record  on fields
+            pst.setInt(1, dts.getIdres());           
+            
+            int n=pst.executeUpdate();
+            if (n!=0) {
+                return true;
+            }else {
+                return false;
+            }
+        } catch (SQLException e) {
+            JOptionPane.showConfirmDialog(null, e);
+            return false;
+        }        
+    }
+
+    public boolean canceled(Vreservations dts){
+         sSql = "update tb_reservations set state_res='CANCELADA' where id_res=?";
+
+        try {
+            PreparedStatement pst=cn.prepareStatement(sSql);
+            // update record  on fields
+            pst.setInt(1, dts.getIdres());           
+            
+            int n=pst.executeUpdate();
+            if (n!=0) {
+                return true;
+            }else {
+                return false;
+            }
+        } catch (SQLException e) {
+            JOptionPane.showConfirmDialog(null, e);
+            return false;
+        }        
+    }    
+        
+    public boolean delete(Vreservations dts){
         sSql = "delete from tb_reservations  where id_res=?";
         try {
             PreparedStatement pst=cn.prepareStatement(sSql);              

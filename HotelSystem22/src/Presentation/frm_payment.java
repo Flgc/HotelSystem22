@@ -5,9 +5,13 @@
  */
 package Presentation;
 
+import Data.Vbedrooms;
 import Data.Vpayment;
+import Data.Vreservations;
+import Logic.ConnectFormBedrooms;
 import Logic.ConnectFormConsum;
 import Logic.ConnectFormPayment;
+import Logic.ConnectFormReservations;
 import java.sql.Date;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
@@ -182,10 +186,7 @@ public class frm_payment extends javax.swing.JInternalFrame {
         lbl_listaProdutos3 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
         TB_ListaPagamentos = new javax.swing.JTable();
-        txt_pesquisar3 = new javax.swing.JTextField();
-        lbl_pesquisar3 = new javax.swing.JLabel();
         btn_sair3 = new javax.swing.JButton();
-        btn_buscar3 = new javax.swing.JButton();
         btn_apagar3 = new javax.swing.JButton();
         lbl_registros = new javax.swing.JLabel();
 
@@ -309,9 +310,7 @@ public class frm_payment extends javax.swing.JInternalFrame {
                                         .addComponent(txt_total_reserv, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 0, Short.MAX_VALUE))
                                     .addComponent(txt_name_client)
-                                    .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
-                                        .addComponent(txt_bedroom_number, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                    .addComponent(txt_bedroom_number, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
                         .addGap(9, 9, 9)
                         .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -500,26 +499,12 @@ public class frm_payment extends javax.swing.JInternalFrame {
         });
         jScrollPane6.setViewportView(TB_ListaPagamentos);
 
-        txt_pesquisar3.setName(""); // NOI18N
-
-        lbl_pesquisar3.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
-        lbl_pesquisar3.setText("Pesquisar");
-
         btn_sair3.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
         btn_sair3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/cancelar.png"))); // NOI18N
         btn_sair3.setText("Sair");
         btn_sair3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_sair3ActionPerformed(evt);
-            }
-        });
-
-        btn_buscar3.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
-        btn_buscar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/novo.GIF"))); // NOI18N
-        btn_buscar3.setText("Buscar");
-        btn_buscar3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_buscar3ActionPerformed(evt);
             }
         });
 
@@ -545,12 +530,7 @@ public class frm_payment extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 617, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_listaProdutos3)
                     .addGroup(jpa_listaQuartos3Layout.createSequentialGroup()
-                        .addComponent(lbl_pesquisar3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txt_pesquisar3, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_buscar3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(258, 258, 258)
                         .addComponent(btn_apagar3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btn_sair3)))
@@ -566,11 +546,8 @@ public class frm_payment extends javax.swing.JInternalFrame {
                 .addComponent(lbl_listaProdutos3)
                 .addGap(18, 18, 18)
                 .addGroup(jpa_listaQuartos3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_pesquisar3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_buscar3)
                     .addComponent(btn_sair3)
-                    .addComponent(btn_apagar3)
-                    .addComponent(lbl_pesquisar3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btn_apagar3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -657,10 +634,24 @@ public class frm_payment extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(rootPane, "O Pagamento foi registrado com sucesso!");
                 showSearch(idreservation);
                 componentDisable();
+                
+                //Vacate bedroom
+                ConnectFormBedrooms func2 = new ConnectFormBedrooms();
+                Vbedrooms dts2 = new Vbedrooms();
+                
+                dts2.setIdBedrooms(Integer.parseInt(txt_id_bedroom.getText()));
+                func2.vacate(dts2);
+                
+                //Pay Out and canceled reservation
+                ConnectFormReservations func3 = new ConnectFormReservations();
+                Vreservations dts3 = new Vreservations();
+                
+                dts3.setIdres(Integer.parseInt(txt_id_reserv.getText()));
+                func3.paidOut(dts3);
             }
         }
         else if(action.equals("edit")){
-            dts.setIdpay(Integer.parseInt(txt_id_reserv.getText()));
+            dts.setIdpay(Integer.parseInt(txt_id_payment.getText()));
 
             if (func.edit(dts)){
                 JOptionPane.showMessageDialog(rootPane, "O Pagamento foi editado com sucesso!");
@@ -696,10 +687,6 @@ public class frm_payment extends javax.swing.JInternalFrame {
     private void btn_sair3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sair3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_sair3ActionPerformed
-
-    private void btn_buscar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscar3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_buscar3ActionPerformed
 
     private void btn_apagar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_apagar3ActionPerformed
         // TODO add your handling code here:
@@ -779,7 +766,6 @@ public class frm_payment extends javax.swing.JInternalFrame {
     private javax.swing.JTable TB_ListaConsumo;
     private javax.swing.JTable TB_ListaPagamentos;
     private javax.swing.JButton btn_apagar3;
-    private javax.swing.JButton btn_buscar3;
     private javax.swing.JButton btn_cancelar;
     private javax.swing.JButton btn_novo;
     private javax.swing.JButton btn_sair3;
@@ -800,7 +786,6 @@ public class frm_payment extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lbl_listaProdutos3;
     private javax.swing.JLabel lbl_name_client;
     private javax.swing.JLabel lbl_number_pay;
-    private javax.swing.JLabel lbl_pesquisar3;
     private javax.swing.JLabel lbl_rate_pay;
     private javax.swing.JLabel lbl_reg_consum;
     private javax.swing.JLabel lbl_registros;
@@ -814,7 +799,6 @@ public class frm_payment extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txt_id_reserv;
     private javax.swing.JTextField txt_name_client;
     private javax.swing.JTextField txt_number_pay;
-    private javax.swing.JTextField txt_pesquisar3;
     private javax.swing.JTextField txt_rate_pay;
     private javax.swing.JTextField txt_total_pay;
     private javax.swing.JTextField txt_total_reserv;

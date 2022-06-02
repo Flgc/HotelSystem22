@@ -145,8 +145,46 @@ public class ConnectFormBedrooms {
             return false;
         }        
     }   
+
+    public boolean vacate(Vbedrooms dts){
+        sSql = "update tb_bedroom  set state_br='Disponível' where id_br=?";
+        try {
+            PreparedStatement pst=cn.prepareStatement(sSql);
+            // update record  on fields
+            pst.setInt(1, dts.getIdBedrooms());
+            
+            int n=pst.executeUpdate();
+            if (n!=0) {
+                return true;
+            }else {
+                return false;
+            }
+        } catch (SQLException e) {
+            JOptionPane.showConfirmDialog(null, e);
+            return false;
+        }        
+    }
     
-        public boolean delete(Vbedrooms dts){
+    public boolean occupy(Vbedrooms dts){
+        sSql = "update tb_bedroom  set state_br='Ocupado' where id_br=?";
+        try {
+            PreparedStatement pst=cn.prepareStatement(sSql);
+            // update record  on fields
+            pst.setInt(1, dts.getIdBedrooms());
+            
+            int n=pst.executeUpdate();
+            if (n!=0) {
+                return true;
+            }else {
+                return false;
+            }
+        } catch (SQLException e) {
+            JOptionPane.showConfirmDialog(null, e);
+            return false;
+        }        
+    }
+    
+    public boolean delete(Vbedrooms dts){
         sSql = "delete from tb_bedroom  where id_br=?";
         try {
             PreparedStatement pst=cn.prepareStatement(sSql);              
