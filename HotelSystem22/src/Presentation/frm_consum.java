@@ -461,7 +461,7 @@ public class frm_consum extends javax.swing.JInternalFrame {
                 Vconsum dts = new Vconsum();
                 dts.setIdcon(Integer.parseInt(txt_id_con.getText()));
                 func.delete(dts);
-                showSearch("id_reservat");
+                showSearch(idreservations);
                 componentDisable();
             }
         }
@@ -497,7 +497,7 @@ public class frm_consum extends javax.swing.JInternalFrame {
         if (action.equals("save")){
             if (func.insert(dts)){
                 JOptionPane.showMessageDialog(rootPane, "O Consumo foi registrado com sucesso!");
-                showSearch("id_reservat");
+                showSearch(idreservations);
                 componentDisable();
             }
         }
@@ -506,7 +506,7 @@ public class frm_consum extends javax.swing.JInternalFrame {
 
             if (func.edit(dts)){
                 JOptionPane.showMessageDialog(rootPane, "O Consumo foi editado com sucesso!");
-                showSearch("id_reservat");
+                showSearch(idreservations);
                 componentDisable();
             }
         }

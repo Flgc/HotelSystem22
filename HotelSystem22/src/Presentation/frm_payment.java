@@ -187,7 +187,7 @@ public class frm_payment extends javax.swing.JInternalFrame {
         jScrollPane6 = new javax.swing.JScrollPane();
         TB_ListaPagamentos = new javax.swing.JTable();
         btn_sair3 = new javax.swing.JButton();
-        btn_apagar3 = new javax.swing.JButton();
+        btn_apagar = new javax.swing.JButton();
         lbl_registros = new javax.swing.JLabel();
 
         setClosable(true);
@@ -508,12 +508,12 @@ public class frm_payment extends javax.swing.JInternalFrame {
             }
         });
 
-        btn_apagar3.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
-        btn_apagar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/salvar.png"))); // NOI18N
-        btn_apagar3.setText("Apagar");
-        btn_apagar3.addActionListener(new java.awt.event.ActionListener() {
+        btn_apagar.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
+        btn_apagar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/salvar.png"))); // NOI18N
+        btn_apagar.setText("Apagar");
+        btn_apagar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_apagar3ActionPerformed(evt);
+                btn_apagarActionPerformed(evt);
             }
         });
 
@@ -531,7 +531,7 @@ public class frm_payment extends javax.swing.JInternalFrame {
                     .addComponent(lbl_listaProdutos3)
                     .addGroup(jpa_listaQuartos3Layout.createSequentialGroup()
                         .addGap(258, 258, 258)
-                        .addComponent(btn_apagar3)
+                        .addComponent(btn_apagar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btn_sair3)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -547,7 +547,7 @@ public class frm_payment extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jpa_listaQuartos3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_sair3)
-                    .addComponent(btn_apagar3))
+                    .addComponent(btn_apagar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -681,16 +681,40 @@ public class frm_payment extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txt_name_clientActionPerformed
 
     private void TB_ListaPagamentosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TB_ListaPagamentosMouseClicked
-        // TODO add your handling code here:
+        btn_salvar.setText("Editar");
+        componentEnable();
+        btn_apagar.setEnabled(true);
+        action="edit";
+        int rowActive = TB_ListaPagamentos.rowAtPoint(evt.getPoint());
+
+        txt_id_payment.setText(TB_ListaPagamentos.getValueAt(rowActive, 0).toString());
+        txt_id_reserv.setText(TB_ListaPagamentos.getValueAt(rowActive, 1).toString());
+        cmb_type_pay.setSelectedItem(TB_ListaPagamentos.getValueAt(rowActive, 2).toString());
+        txt_number_pay.setText(TB_ListaPagamentos.getValueAt(rowActive, 3).toString());
+        txt_rate_pay.setText(TB_ListaPagamentos.getValueAt(rowActive, 4).toString());
+        txt_total_pay.setText(TB_ListaPagamentos.getValueAt(rowActive, 5).toString());
+        jdc_date_pay.setDate(Date.valueOf(TB_ListaPagamentos.getValueAt(rowActive, 6).toString()));
+        jdc_emission_pay.setDate(Date.valueOf(TB_ListaPagamentos.getValueAt(rowActive, 7).toString()));
     }//GEN-LAST:event_TB_ListaPagamentosMouseClicked
 
     private void btn_sair3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sair3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_sair3ActionPerformed
 
-    private void btn_apagar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_apagar3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_apagar3ActionPerformed
+    private void btn_apagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_apagarActionPerformed
+        if(!txt_id_payment.getText().equals("")){
+            int confirmation = JOptionPane.showConfirmDialog(rootPane, "Deseja realmente excluir esse registro?", "Excluir", 2);
+            if (confirmation == 0){
+                ConnectFormPayment func = new ConnectFormPayment();
+                Vpayment dts = new Vpayment();
+                
+                dts.setIdpay(Integer.parseInt(txt_id_payment.getText()));
+                func.delete(dts);
+                showSearch(idreservation);
+                componentDisable();
+            }
+        }        
+    }//GEN-LAST:event_btn_apagarActionPerformed
 
     private void txt_bedroom_numberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_bedroom_numberActionPerformed
         // TODO add your handling code here:
@@ -709,17 +733,7 @@ public class frm_payment extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txt_total_payActionPerformed
 
     private void TB_ListaConsumoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TB_ListaConsumoMouseClicked
-        btn_salvar.setText("Editar");
-        componentEnable();
-        btn_apagar.setEnabled(true);
-        action="edit";
-        int rowActive = TB_ListaConsumo.rowAtPoint(evt.getPoint());
 
-        txt_id_reserv.setText(TB_ListaConsumo.getValueAt(rowActive, 0).toString());
-        txt_name_client.setText(TB_ListaConsumo.getValueAt(rowActive, 1).toString());
-        txt_descript_prod.setText(TB_ListaConsumo.getValueAt(rowActive, 2).toString());
-        cmb_type_pay.setSelectedItem(TB_ListaConsumo.getValueAt(rowActive, 3).toString());
-        txt_price_prod.setText(TB_ListaConsumo.getValueAt(rowActive, 4).toString());
     }//GEN-LAST:event_TB_ListaConsumoMouseClicked
 
     private void txt_total_reservActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_total_reservActionPerformed
@@ -765,7 +779,7 @@ public class frm_payment extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TB_ListaConsumo;
     private javax.swing.JTable TB_ListaPagamentos;
-    private javax.swing.JButton btn_apagar3;
+    private javax.swing.JButton btn_apagar;
     private javax.swing.JButton btn_cancelar;
     private javax.swing.JButton btn_novo;
     private javax.swing.JButton btn_sair3;
