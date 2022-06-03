@@ -25,7 +25,7 @@ public class frm_consum extends javax.swing.JInternalFrame {
     public frm_consum() {
         initComponents();
         componentDisable();
-        showSearch("id_reservat");        
+        showSearch(idreservations);        
         txt_name_client.setText(clients);
         txt_id_reserv.setText(idreservations);
     }

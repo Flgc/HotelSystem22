@@ -51,13 +51,13 @@ public class frm_payment extends javax.swing.JInternalFrame {
     
     //Disable table colum
     void  hide_column(){
-         TB_ListaPagamentos.getColumnModel().getColumn(0).setMaxWidth(0);
-         TB_ListaPagamentos.getColumnModel().getColumn(0).setMinWidth(0);
-         TB_ListaPagamentos.getColumnModel().getColumn(0).setPreferredWidth(0);
+         TB_ListaPayments.getColumnModel().getColumn(0).setMaxWidth(0);
+         TB_ListaPayments.getColumnModel().getColumn(0).setMinWidth(0);
+         TB_ListaPayments.getColumnModel().getColumn(0).setPreferredWidth(0);
 
-         TB_ListaPagamentos.getColumnModel().getColumn(1).setMaxWidth(0);
-         TB_ListaPagamentos.getColumnModel().getColumn(1).setMinWidth(0);
-         TB_ListaPagamentos.getColumnModel().getColumn(1).setPreferredWidth(0);         
+         TB_ListaPayments.getColumnModel().getColumn(1).setMaxWidth(0);
+         TB_ListaPayments.getColumnModel().getColumn(1).setMinWidth(0);
+         TB_ListaPayments.getColumnModel().getColumn(1).setPreferredWidth(0);         
     }
     
       void  hide_columnConsumo(){
@@ -121,7 +121,7 @@ public class frm_payment extends javax.swing.JInternalFrame {
               DefaultTableModel model;
               ConnectFormPayment func = new ConnectFormPayment();
               model = func.showSearch(searching);
-              TB_ListaPagamentos.setModel(model);
+              TB_ListaPayments.setModel(model);
               hide_column();
               lbl_registros.setText("Total Registros "+Integer.toString(func.recordTotal));              
 
@@ -185,7 +185,7 @@ public class frm_payment extends javax.swing.JInternalFrame {
         jpa_listaQuartos3 = new javax.swing.JPanel();
         lbl_listaProdutos3 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        TB_ListaPagamentos = new javax.swing.JTable();
+        TB_ListaPayments = new javax.swing.JTable();
         btn_sair3 = new javax.swing.JButton();
         btn_apagar = new javax.swing.JButton();
         lbl_registros = new javax.swing.JLabel();
@@ -481,7 +481,7 @@ public class frm_payment extends javax.swing.JInternalFrame {
         lbl_listaProdutos3.setFont(new java.awt.Font("Times New Roman", 1, 11)); // NOI18N
         lbl_listaProdutos3.setText("Lista de Pagamentos");
 
-        TB_ListaPagamentos.setModel(new javax.swing.table.DefaultTableModel(
+        TB_ListaPayments.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -492,12 +492,12 @@ public class frm_payment extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        TB_ListaPagamentos.addMouseListener(new java.awt.event.MouseAdapter() {
+        TB_ListaPayments.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                TB_ListaPagamentosMouseClicked(evt);
+                TB_ListaPaymentsMouseClicked(evt);
             }
         });
-        jScrollPane6.setViewportView(TB_ListaPagamentos);
+        jScrollPane6.setViewportView(TB_ListaPayments);
 
         btn_sair3.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
         btn_sair3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/cancelar.png"))); // NOI18N
@@ -680,22 +680,22 @@ public class frm_payment extends javax.swing.JInternalFrame {
         txt_name_client.transferFocus();
     }//GEN-LAST:event_txt_name_clientActionPerformed
 
-    private void TB_ListaPagamentosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TB_ListaPagamentosMouseClicked
+    private void TB_ListaPaymentsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TB_ListaPaymentsMouseClicked
         btn_salvar.setText("Editar");
         componentEnable();
         btn_apagar.setEnabled(true);
         action="edit";
-        int rowActive = TB_ListaPagamentos.rowAtPoint(evt.getPoint());
+        int rowActive = TB_ListaPayments.rowAtPoint(evt.getPoint());
 
-        txt_id_payment.setText(TB_ListaPagamentos.getValueAt(rowActive, 0).toString());
-        txt_id_reserv.setText(TB_ListaPagamentos.getValueAt(rowActive, 1).toString());
-        cmb_type_pay.setSelectedItem(TB_ListaPagamentos.getValueAt(rowActive, 2).toString());
-        txt_number_pay.setText(TB_ListaPagamentos.getValueAt(rowActive, 3).toString());
-        txt_rate_pay.setText(TB_ListaPagamentos.getValueAt(rowActive, 4).toString());
-        txt_total_pay.setText(TB_ListaPagamentos.getValueAt(rowActive, 5).toString());
-        jdc_date_pay.setDate(Date.valueOf(TB_ListaPagamentos.getValueAt(rowActive, 6).toString()));
-        jdc_emission_pay.setDate(Date.valueOf(TB_ListaPagamentos.getValueAt(rowActive, 7).toString()));
-    }//GEN-LAST:event_TB_ListaPagamentosMouseClicked
+        txt_id_payment.setText(TB_ListaPayments.getValueAt(rowActive, 0).toString());
+        txt_id_reserv.setText(TB_ListaPayments.getValueAt(rowActive, 1).toString());
+        cmb_type_pay.setSelectedItem(TB_ListaPayments.getValueAt(rowActive, 2).toString());
+        txt_number_pay.setText(TB_ListaPayments.getValueAt(rowActive, 3).toString());
+        txt_rate_pay.setText(TB_ListaPayments.getValueAt(rowActive, 4).toString());
+        txt_total_pay.setText(TB_ListaPayments.getValueAt(rowActive, 5).toString());
+        jdc_date_pay.setDate(Date.valueOf(TB_ListaPayments.getValueAt(rowActive, 6).toString()));
+        jdc_emission_pay.setDate(Date.valueOf(TB_ListaPayments.getValueAt(rowActive, 7).toString()));
+    }//GEN-LAST:event_TB_ListaPaymentsMouseClicked
 
     private void btn_sair3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sair3ActionPerformed
         // TODO add your handling code here:
@@ -778,7 +778,7 @@ public class frm_payment extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TB_ListaConsumo;
-    private javax.swing.JTable TB_ListaPagamentos;
+    private javax.swing.JTable TB_ListaPayments;
     private javax.swing.JButton btn_apagar;
     private javax.swing.JButton btn_cancelar;
     private javax.swing.JButton btn_novo;
