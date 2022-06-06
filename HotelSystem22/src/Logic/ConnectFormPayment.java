@@ -28,13 +28,14 @@ public class ConnectFormPayment {
     public DefaultTableModel showSearch(String searching){
         
         DefaultTableModel model;
-        String [ ] titles = {"ID PGTO", "ID Reservas", "Tipo Comprovante", "Num. Comprovante", "Taxa", "Total Pagamento","DAta Emissão", "Data pagamento"};
+        String [ ] titles = {"ID PGTO", "ID Reservas", "Tipo Comprovante", "Num. Comprovante", "Taxa", 
+            "Total Pagamento","DAta Emissão", "Data pagamento"};
         String [ ] records = new String[8];
         recordTotal = 0;
         
         model = new DefaultTableModel(null, titles);
         
-        sSql = "select * from tb_payment where id_reservat"+searching+" order by id_pay";
+        sSql = "select * from tb_payment where id_reservat="+searching+" order by id_pay";
         
         try {
             Statement st = cn.createStatement();

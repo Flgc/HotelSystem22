@@ -78,41 +78,38 @@ public class frm_payment extends javax.swing.JInternalFrame {
         txt_id_payment.setVisible(false);
         txt_id_reserv.setVisible(false);
         txt_id_bedroom.setVisible(false);
-        cmb_type_pay.setVisible(false);
-        txt_name_client.setVisible(false);
-        txt_total_pay.setVisible(false);
-        txt_bedroom_number.setVisible(false);
-        txt_total_reserv.setVisible(false);
-        jdc_emission_pay.setVisible(false);
-        jdc_date_pay.setVisible(false);
-        txt_number_pay.setVisible(false);
-        txt_rate_pay.setVisible(false);
+        cmb_type_pay.setEnabled(false);
+        txt_name_client.setEnabled(false);
+        txt_total_pay.setEnabled(false);
+        txt_bedroom_number.setEnabled(false);
+        txt_total_reserv.setEnabled(false);
+        jdc_emission_pay.setEnabled(false);
+        jdc_date_pay.setEnabled(false);
+        txt_number_pay.setEnabled(false);
+        txt_rate_pay.setEnabled(false);
         
         btn_salvar.setEnabled(false);
         btn_cancelar.setEnabled(false);
         
-        txt_name_client.setText("");
     }
 
       void componentEnable(){
         txt_id_payment.setVisible(false);
         txt_id_reserv.setVisible(false);
         txt_id_bedroom.setVisible(false);
-        cmb_type_pay.setVisible(true);
-        txt_name_client.setVisible(false);
-        txt_total_pay.setVisible(false);
-        txt_bedroom_number.setVisible(false);
-        txt_total_reserv.setVisible(false);
-        jdc_emission_pay.setVisible(true);
-        jdc_date_pay.setVisible(true);
-        txt_number_pay.setVisible(true);
-        txt_rate_pay.setVisible(true);
+        cmb_type_pay.setEnabled(true);
+        txt_name_client.setEnabled(false);
+        txt_total_pay.setEnabled(false);
+        txt_bedroom_number.setEnabled(false);
+        txt_total_reserv.setEnabled(false);
+        jdc_emission_pay.setEnabled(true);
+        jdc_date_pay.setEnabled(true);
+        txt_number_pay.setEnabled(true);
+        txt_rate_pay.setEnabled(true);
         
         btn_novo.setEnabled(true);
         btn_salvar.setEnabled(true);
         btn_cancelar.setEnabled(true);
-        
-        txt_name_client.setText("");
     }  
       
       void showSearch(String searching){
@@ -241,6 +238,7 @@ public class frm_payment extends javax.swing.JInternalFrame {
         lbl_rate_pay.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
         lbl_rate_pay.setText("Taxa");
 
+        txt_rate_pay.setText("0");
         txt_rate_pay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_rate_payActionPerformed(evt);
@@ -291,7 +289,7 @@ public class frm_payment extends javax.swing.JInternalFrame {
                         .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lbl_total_pay)
                             .addComponent(lbl_rate_pay))
-                        .addGap(34, 34, 34)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
                                 .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -302,24 +300,16 @@ public class frm_payment extends javax.swing.JInternalFrame {
                                         .addComponent(txt_total_pay, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(txt_rate_pay, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(txt_number_pay, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(85, 85, 85))
+                                .addGap(14, 14, 14))
                             .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
                                 .addGap(2, 2, 2)
                                 .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
-                                        .addComponent(txt_total_reserv, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
                                     .addComponent(txt_name_client)
-                                    .addComponent(txt_bedroom_number, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lbl_date_pay)
-                            .addComponent(lbl_emission_pay))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jdc_emission_pay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jdc_date_pay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
+                                        .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txt_total_reserv, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txt_bedroom_number, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 0, Short.MAX_VALUE))))))
                     .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
                         .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbl_name_client)
@@ -327,7 +317,15 @@ public class frm_payment extends javax.swing.JInternalFrame {
                             .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(lbl_number_pay)
                                 .addComponent(lbl_type_pay, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(lbl_total_reserv, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lbl_total_reserv, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
+                                .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbl_date_pay)
+                                    .addComponent(lbl_emission_pay))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jdc_date_pay, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                                    .addComponent(jdc_emission_pay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -364,7 +362,7 @@ public class frm_payment extends javax.swing.JInternalFrame {
                         .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cmb_type_pay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_type_pay, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(19, 19, 19)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txt_number_pay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -377,15 +375,19 @@ public class frm_payment extends javax.swing.JInternalFrame {
                     .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
                         .addGap(52, 52, 52)
                         .addComponent(lbl_number_pay)))
-                .addGap(18, 18, 18)
+                .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lbl_emission_pay, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(jpa_cadQuartosLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jdc_emission_pay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jdc_date_pay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbl_date_pay, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jpa_cadQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jdc_emission_pay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbl_emission_pay, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addGap(24, 24, 24))
         );
 
         jpa_listaQuartos.setForeground(new java.awt.Color(204, 204, 204));
@@ -426,8 +428,8 @@ public class frm_payment extends javax.swing.JInternalFrame {
                 .addGroup(jpa_listaQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpa_listaQuartosLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(lbl_tot_consum)
-                        .addGap(171, 171, 171)
+                        .addComponent(lbl_tot_consum, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(142, 142, 142)
                         .addComponent(lbl_reg_consum)
                         .addGap(47, 47, 47))
                     .addGroup(jpa_listaQuartosLayout.createSequentialGroup()
@@ -560,15 +562,15 @@ public class frm_payment extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(1, 1, 1)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btn_novo, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btn_salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jpa_cadQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jpa_cadQuartos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jpa_listaQuartos3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -578,8 +580,9 @@ public class frm_payment extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jpa_cadQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_novo)
                     .addComponent(btn_cancelar)
@@ -589,7 +592,7 @@ public class frm_payment extends javax.swing.JInternalFrame {
                 .addComponent(jpa_listaQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpa_listaQuartos3, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 9, Short.MAX_VALUE))
         );
 
         pack();
