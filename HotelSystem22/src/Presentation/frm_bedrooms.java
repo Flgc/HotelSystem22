@@ -7,8 +7,18 @@ package Presentation;
 
 import Data.Vbedrooms;
 import Logic.ConnectFormBedrooms;
+import Logic.Connections;
+import java.io.File;
+import java.sql.Connection;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 
 /**
@@ -133,6 +143,7 @@ public class frm_bedrooms extends javax.swing.JInternalFrame {
         btn_buscar = new javax.swing.JButton();
         btn_apagar = new javax.swing.JButton();
         lbl_registros = new javax.swing.JLabel();
+        btn_rel = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(240, 240, 240));
         setClosable(true);
@@ -360,7 +371,7 @@ public class frm_bedrooms extends javax.swing.JInternalFrame {
         });
 
         btn_buscar.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
-        btn_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/novo.GIF"))); // NOI18N
+        btn_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/buscar.png"))); // NOI18N
         btn_buscar.setText("Buscar");
         btn_buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -380,6 +391,15 @@ public class frm_bedrooms extends javax.swing.JInternalFrame {
         lbl_registros.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
         lbl_registros.setText("Registros");
 
+        btn_rel.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
+        btn_rel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/novo.GIF"))); // NOI18N
+        btn_rel.setText("Relatório");
+        btn_rel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_relActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jpa_listaQuartosLayout = new javax.swing.GroupLayout(jpa_listaQuartos);
         jpa_listaQuartos.setLayout(jpa_listaQuartosLayout);
         jpa_listaQuartosLayout.setHorizontalGroup(
@@ -387,21 +407,22 @@ public class frm_bedrooms extends javax.swing.JInternalFrame {
             .addGroup(jpa_listaQuartosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jpa_listaQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE)
                     .addGroup(jpa_listaQuartosLayout.createSequentialGroup()
-                        .addGroup(jpa_listaQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_cadQuarto1)
-                            .addGroup(jpa_listaQuartosLayout.createSequentialGroup()
-                                .addComponent(lbl_pesquisar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txt_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn_buscar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btn_apagar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btn_sair)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(lbl_cadQuarto1)
+                        .addGap(0, 484, Short.MAX_VALUE))
+                    .addGroup(jpa_listaQuartosLayout.createSequentialGroup()
+                        .addComponent(lbl_pesquisar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txt_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_buscar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_apagar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_rel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_sair, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpa_listaQuartosLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -418,7 +439,8 @@ public class frm_bedrooms extends javax.swing.JInternalFrame {
                     .addComponent(btn_buscar)
                     .addComponent(btn_sair)
                     .addComponent(btn_apagar)
-                    .addComponent(lbl_pesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lbl_pesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_rel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -575,6 +597,24 @@ public class frm_bedrooms extends javax.swing.JInternalFrame {
         cleanField();
     }//GEN-LAST:event_btn_cancelarActionPerformed
 
+    private Connections connections=new Connections();
+    private Connection cn=connections.connect();        
+    private void btn_relActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_relActionPerformed
+        Map map=new HashMap();
+        JasperReport rel;
+        JasperPrint imp;
+        
+        try {
+            rel = JasperCompileManager.compileReport(new File("").getAbsolutePath()+"/src/reports/Bedrooms.jrxml");
+            imp = JasperFillManager.fillReport(rel, map, cn); 
+            JasperViewer view = new JasperViewer(imp, false);
+            view.setTitle("Relatório de Quartos");
+            view.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btn_relActionPerformed
+
     void cleanField(){
         txt_id_br.setText("");
         txt_numero.setText("");
@@ -624,6 +664,7 @@ public class frm_bedrooms extends javax.swing.JInternalFrame {
     private javax.swing.JButton btn_buscar;
     private javax.swing.JButton btn_cancelar;
     private javax.swing.JButton btn_novo;
+    private javax.swing.JButton btn_rel;
     private javax.swing.JButton btn_sair;
     private javax.swing.JButton btn_salvar;
     private javax.swing.JComboBox<String> cmb_andar;
