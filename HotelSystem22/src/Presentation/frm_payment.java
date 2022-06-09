@@ -12,10 +12,20 @@ import Logic.ConnectFormBedrooms;
 import Logic.ConnectFormConsum;
 import Logic.ConnectFormPayment;
 import Logic.ConnectFormReservations;
+import Logic.Connections;
+import java.io.File;
+import java.sql.Connection;
 import java.sql.Date;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -186,6 +196,7 @@ public class frm_payment extends javax.swing.JInternalFrame {
         btn_sair3 = new javax.swing.JButton();
         btn_apagar = new javax.swing.JButton();
         lbl_registros = new javax.swing.JLabel();
+        btn_rel = new javax.swing.JButton();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -522,6 +533,15 @@ public class frm_payment extends javax.swing.JInternalFrame {
         lbl_registros.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
         lbl_registros.setText("Registros");
 
+        btn_rel.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
+        btn_rel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/novo.GIF"))); // NOI18N
+        btn_rel.setText("Nota Fiscal");
+        btn_rel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_relActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jpa_listaQuartos3Layout = new javax.swing.GroupLayout(jpa_listaQuartos3);
         jpa_listaQuartos3.setLayout(jpa_listaQuartos3Layout);
         jpa_listaQuartos3Layout.setHorizontalGroup(
@@ -532,7 +552,8 @@ public class frm_payment extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 617, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_listaProdutos3)
                     .addGroup(jpa_listaQuartos3Layout.createSequentialGroup()
-                        .addGap(258, 258, 258)
+                        .addComponent(btn_rel)
+                        .addGap(165, 165, 165)
                         .addComponent(btn_apagar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btn_sair3)))
@@ -549,7 +570,8 @@ public class frm_payment extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jpa_listaQuartos3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_sair3)
-                    .addComponent(btn_apagar))
+                    .addComponent(btn_apagar)
+                    .addComponent(btn_rel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -743,6 +765,27 @@ public class frm_payment extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_total_reservActionPerformed
 
+    private Connections connections=new Connections();
+    private Connection cn=connections.connect(); 
+    private void btn_relActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_relActionPerformed
+        if(!txt_id_payment.getText().equals("")){
+            Map map=new HashMap();
+            map.put("payment_id", txt_id_payment.getText());
+            JasperReport rel;
+            JasperPrint imp;
+
+            try {
+                rel = JasperCompileManager.compileReport(new File("").getAbsolutePath()+"/src/reports/rel_note.jrxml");
+                imp = JasperFillManager.fillReport(rel, map, cn); 
+                JasperViewer view = new JasperViewer(imp, false);
+                view.setTitle("Impressão da Nota Fiscal");
+                view.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
+            } 
+        }     
+    }//GEN-LAST:event_btn_relActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -785,6 +828,7 @@ public class frm_payment extends javax.swing.JInternalFrame {
     private javax.swing.JButton btn_apagar;
     private javax.swing.JButton btn_cancelar;
     private javax.swing.JButton btn_novo;
+    private javax.swing.JButton btn_rel;
     private javax.swing.JButton btn_sair3;
     private javax.swing.JButton btn_salvar;
     private javax.swing.JComboBox<String> cmb_type_pay;
