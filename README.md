@@ -41,7 +41,8 @@ O projeto foi desenvolvido durante o curso de Java Hoteleiro e Reservas, consist
 - Java
 - Mysql
 - NetBeans 12
-  <br><br>
+- JasperReports   
+<br><br>
 
 # 🔧 Como instalar e executar o projeto
 
